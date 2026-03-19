@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>슈퍼잉글리쉬 IELTS 1:1 PT</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy2: #112240;
+    --blue: #1a56db;
+    --blue-light: #3b82f6;
+    --gold: #f59e0b;
+    --white: #ffffff;
+    --gray: #94a3b8;
+    --card-bg: #162032;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans KR', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a1628 0%, #112240 50%, #0d1f3c 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 80px 24px 60px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(26,86,219,0.18) 0%, transparent 70%);
+    top: -100px; right: -100px; border-radius: 50%;
+  }
+  .hero::after {
+    content: ''; position: absolute; width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(245,158,11,0.10) 0%, transparent 70%);
+    bottom: -50px; left: -50px; border-radius: 50%;
+  }
+  .badge {
+    display: inline-block; background: rgba(26,86,219,0.2);
+    border: 1px solid rgba(59,130,246,0.4); color: #93c5fd;
+    font-size: 13px; font-weight: 500; padding: 6px 16px;
+    border-radius: 999px; margin-bottom: 28px; letter-spacing: 0.05em; position: relative;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 10vw, 100px); line-height: 0.95;
+    letter-spacing: 0.02em; margin-bottom: 10px; position: relative;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: clamp(18px, 3vw, 26px); font-weight: 700; color: #93c5fd;
+    margin-bottom: 20px; letter-spacing: -0.01em; position: relative;
+  }
+  .hero-desc {
+    font-size: 15px; color: #94a3b8; line-height: 1.8;
+    max-width: 540px; margin-bottom: 40px; position: relative;
+  }
+  .hero-cta {
+    display: inline-block; background: linear-gradient(135deg, var(--blue), #2563eb);
+    color: white; font-size: 16px; font-weight: 700; padding: 16px 40px;
+    border-radius: 8px; text-decoration: none; box-shadow: 0 8px 30px rgba(26,86,219,0.4);
+    transition: transform 0.2s, box-shadow 0.2s; position: relative;
+  }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(26,86,219,0.5); }
+  .hero-scores {
+    display: flex; gap: 40px; margin-top: 56px;
+    flex-wrap: wrap; justify-content: center; position: relative;
+  }
+  .score-item { text-align: center; }
+  .score-num { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--gold); line-height: 1; }
+  .score-label { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+  /* COMMON */
+  .section-wrap { padding: 80px 24px; }
+  .section-wrap-alt { padding: 80px 24px; background: var(--navy2); }
+  .inner { max-width: 900px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.15em;
+    color: var(--blue-light); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(26px, 4vw, 38px); font-weight: 900;
+    line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .section-title em { font-style: normal; color: var(--gold); }
+  .section-desc { font-size: 15px; color: #94a3b8; line-height: 1.8; max-width: 620px; margin-bottom: 40px; }
+
+  /* PAIN */
+  .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 8px; }
+  .pain-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; }
+  .pain-icon { font-size: 28px; margin-bottom: 14px; }
+  .pain-title { font-size: 15px; font-weight: 700; color: #e2e8f0; margin-bottom: 10px; }
+  .pain-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .pain-list li { font-size: 13px; color: #94a3b8; padding-left: 14px; position: relative; line-height: 1.6; }
+  .pain-list li::before { content: '·'; position: absolute; left: 0; color: var(--blue-light); }
+
+  /* FEATURES */
+  .feat-list { display: flex; flex-direction: column; margin-top: 40px; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
+  .feat-row {
+    display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start;
+    background: var(--card-bg); padding: 28px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+  .feat-row:last-child { border-bottom: none; }
+  .feat-row:hover { background: #1a2840; }
+  .feat-num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: rgba(59,130,246,0.25); line-height: 1; padding-top: 2px; }
+  .feat-title { font-size: 16px; font-weight: 700; color: #e2e8f0; margin-bottom: 8px; }
+  .feat-desc { font-size: 13.5px; color: #94a3b8; line-height: 1.75; }
+
+  /* SUMMARY */
+  .summary-table { width: 100%; border-collapse: collapse; margin-top: 40px; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
+  .summary-table tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .summary-table tr:last-child { border-bottom: none; }
+  .summary-table tr:nth-child(odd) { background: var(--card-bg); }
+  .summary-table tr:nth-child(even) { background: #1a2840; }
+  .summary-table td { padding: 16px 20px; font-size: 14px; }
+  .summary-table td:first-child { color: #94a3b8; width: 38%; }
+  .summary-table td:last-child { color: #e2e8f0; font-weight: 500; }
+
+  /* PRICING */
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 40px; }
+  .price-card {
+    background: var(--card-bg); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px; padding: 28px 20px; text-align: center;
+    position: relative; transition: transform 0.2s;
+  }
+  .price-card:hover { transform: translateY(-4px); }
+  .price-card.gold { border-color: rgba(245,158,11,0.4); background: linear-gradient(135deg, #1c1a0e, #1e1c0a); }
+  .price-tier { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--gray); margin-bottom: 6px; text-transform: uppercase; }
+  .price-type { font-size: 15px; font-weight: 700; color: #e2e8f0; margin-bottom: 18px; }
+  .price-amount { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; margin-bottom: 4px; }
+  .price-card.gold .price-amount { color: var(--gold); }
+  .price-card:not(.gold) .price-amount { color: #93c5fd; }
+  .price-unit { font-size: 12px; color: var(--gray); margin-bottom: 14px; }
+  .price-detail { font-size: 12.5px; color: #64748b; line-height: 1.7; }
+
+  /* REVIEWS */
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 40px; }
+  .review-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 22px 20px; transition: border-color 0.2s; }
+  .review-card:hover { border-color: rgba(245,158,11,0.25); }
+  .review-score { display: inline-block; font-size: 11px; font-weight: 700; background: rgba(245,158,11,0.12); color: var(--gold); border: 1px solid rgba(245,158,11,0.25); padding: 2px 9px; border-radius: 4px; margin-bottom: 10px; }
+  .review-title { font-size: 13.5px; font-weight: 700; color: #e2e8f0; margin-bottom: 10px; line-height: 1.5; }
+  .review-text { font-size: 12.5px; color: #94a3b8; line-height: 1.75; margin-bottom: 16px; }
+  .review-author { display: flex; align-items: center; gap: 8px; }
+  .review-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), #7c3aed); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+  .review-name { font-size: 12px; font-weight: 700; color: #64748b; }
+
+  /* CTA */
+  .cta-section { text-align: center; padding: 100px 24px; background: linear-gradient(135deg, #0a1628, #112240); position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(26,86,219,0.15) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 50%; }
+  .cta-section .inner { position: relative; }
+  .cta-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 10vw, 90px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 10px; }
+  .cta-section h2 span { color: var(--gold); }
+  .cta-section h2 .quote { font-family: 'Noto Sans KR', sans-serif; font-size: 0.6em; vertical-align: top; color: rgba(245,158,11,0.5); font-weight: 900; }
+  .cta-sub { font-size: clamp(18px, 3vw, 26px); font-weight: 700; color: #93c5fd; margin-bottom: 16px; }
+  .cta-section p { font-size: 15px; color: #94a3b8; margin-bottom: 36px; line-height: 1.8; }
+  .cta-btn { display: inline-block; background: linear-gradient(135deg, #f59e0b, #d97706); color: #000; font-size: 16px; font-weight: 700; padding: 18px 48px; border-radius: 8px; text-decoration: none; box-shadow: 0 8px 30px rgba(245,158,11,0.35); transition: transform 0.2s, box-shadow 0.2s; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(245,158,11,0.45); }
+
+  .divider { height: 1px; background: rgba(255,255,255,0.06); max-width: 900px; margin: 0 auto; }
+
+  @media (max-width: 640px) {
+    .pain-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .feat-row { grid-template-columns: 40px 1fr; gap: 14px; padding: 22px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">🎯 IELTS 스피킹 · 라이팅 전문</div>
+  <h1>슈퍼잉글리쉬<br><span>IELTS</span></h1>
+  <div class="hero-sub">1:1 밀착 PT로 목표 밴드 달성</div>
+  <p class="hero-desc">혼자서는 오르지 않는 스피킹·라이팅 밴드.<br>아이엘츠 전문 강사와 1:1로 집중 공략합니다.</p>
+  <a href="#pricing" class="hero-cta">수업 알아보기 →</a>
+  <div class="hero-scores">
+    <div class="score-item"><div class="score-num">8.5-9.0</div><div class="score-label">강사 실력</div></div>
+    <div class="score-item"><div class="score-num">1:1</div><div class="score-label">개인 튜터링</div></div>
+    <div class="score-item"><div class="score-num">월20회</div><div class="score-label">수업 횟수</div></div>
+    <div class="score-item"><div class="score-num">주5회</div><div class="score-label">집중 수업</div></div>
+  </div>
+</div>
+
+<!-- PAIN -->
+<div class="section-wrap-alt">
+  <div class="inner">
+    <div class="section-label">이런 분께 필요해요</div>
+    <h2 class="section-title">혼자 하기 어렵다면,<br><em>이유가 있어요</em></h2>
+    <p class="section-desc">스피킹·라이팅 점수가 오르지 않는 건 노력이 부족한 게 아닙니다. 전문 피드백을 포함한 실전 연습이 부족하기 때문입니다.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">📉</div>
+        <div class="pain-title">점수가 안 오를 때</div>
+        <ul class="pain-list">
+          <li>혼자 독학했는데 스피킹·라이팅 밴드가 계속 제자리</li>
+          <li>어학연수, 해외대학 졸업 후에도 7.0 이상이 안 나옴</li>
+          <li>리스닝·리딩은 되는데 스피킹·라이팅만 발목</li>
+        </ul>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">⏰</div>
+        <div class="pain-title">시험 기한이 촉박할 때</div>
+        <ul class="pain-list">
+          <li>대학 입학, 이민, 취업 비자 데드라인이 정해져 있을 때</li>
+          <li>단기간에 집중적으로 끌어올려야 할 때</li>
+        </ul>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🔇</div>
+        <div class="pain-title">피드백이 없을 때</div>
+        <ul class="pain-list">
+          <li>에세이를 써도 득점인지 실점인지 혼자 판단 어려움</li>
+          <li>스피킹을 연습해도 어디가 문제인지 모름</li>
+          <li>학원 그룹 수업에서 개인 교정을 충분히 못 받음</li>
+        </ul>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🌏</div>
+        <div class="pain-title">시간 효율은 높이고, 장소 제약 없는 집중훈련을 원할 때</div>
+        <ul class="pain-list">
+          <li>학원 왔다갔다 할 시간에 집에서 바로 1:1 연습만 해도 실력 상승</li>
+          <li>해외 거주 중이어도 집중 연습 가능</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section-wrap">
+  <div class="inner">
+    <div class="section-label">핵심 특징</div>
+    <h2 class="section-title">다른 수업과 <em>다른 이유</em></h2>
+    <p class="section-desc">IELTS 시험에 완전히 특화된 커리큘럼으로, 스피킹과 라이팅만 집중 공략합니다.</p>
+    <div class="feat-list">
+      <div class="feat-row">
+        <div class="feat-num">01</div>
+        <div><div class="feat-title">IELTS 스피킹·라이팅 완전 특화</div><div class="feat-desc">일반 영어회화가 아닌 IELTS 시험에 최적화된 훈련과정과 교수법을 채택합니다.</div></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-num">02</div>
+        <div><div class="feat-title">1:1 밀착 튜터링</div><div class="feat-desc">엄격한 테스트로 선발된 아이엘츠 전문 교수진이 화상채팅으로 개인 과외 형태로 진행합니다.</div></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-num">03</div>
+        <div><div class="feat-title">실시간 문장 교정</div><div class="feat-desc">트레이너가 실시간으로 아이엘츠 채점기준에 맞춰 내 대답을 수정하여 나만의 완벽 모범답안, 에세이를 완성합니다.</div></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-num">04</div>
+        <div><div class="feat-title">충분한 수업 시간</div><div class="feat-desc">매일 50분에서 100분 이상으로 수업 시간을 대폭 확대하여 반복적인 연습 및 교정 시간을 확보합니다. 수업 시간이 바로 연습 시간이기에 복습할 시간이 없어도 실력이 상승합니다.</div></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-num">05</div>
+        <div><div class="feat-title">실제 시험 기반 수업</div><div class="feat-desc">현재 시험에 나오는 최신 기출문제로 수업합니다. 선생님과 연습하는 질문이 시험에 나옵니다. 나만의 답안과 에세이를 완성하고 매일 반복 교정으로 실수를 줄여갑니다.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SUMMARY -->
+<div class="section-wrap">
+  <div class="inner">
+    <div class="section-label">한눈에 보기</div>
+    <h2 class="section-title">수업 <em>요약</em></h2>
+    <table class="summary-table">
+      <tr><td>강사 실력</td><td>8.5, 9.0 밴드 필리핀 IELTS 전문 강사</td></tr>
+      <tr><td>수업 형태</td><td>화상영어 1:1 개인 튜터링</td></tr>
+      <tr><td>교정 방식</td><td>실시간 아이엘츠 채점기준 맞춤 즉각 피드백</td></tr>
+      <tr><td>집중 영역</td><td>스피킹 + 라이팅</td></tr>
+      <tr><td>수업 횟수</td><td>주 5회 (월 20회)</td></tr>
+      <tr><td>수업 시간</td><td>50분 또는 100분 선택</td></tr>
+      <tr><td>커리큘럼</td><td>최신 기출 문제 기반, 나만의 모범답안 완성</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="section-wrap-alt" id="pricing">
+  <div class="inner">
+    <div class="section-label">수강료</div>
+    <h2 class="section-title">플랜 <em>선택하기</em></h2>
+    <p class="section-desc">주 5회, 월 20회 수업 기준입니다. 스피킹 또는 라이팅 중 선택하여 수강하실 수 있습니다.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">베테랑</div>
+        <div class="price-type">50분 수업</div>
+        <div class="price-amount">279,000</div>
+        <div class="price-unit">원 / 월</div>
+        <div class="price-detail">주 5회 · 월 20회<br>스피킹 또는 라이팅</div>
+      </div>
+      <div class="price-card gold">
+        <div class="price-tier">프리미엄</div>
+        <div class="price-type">50분 수업</div>
+        <div class="price-amount">329,000</div>
+        <div class="price-unit">원 / 월</div>
+        <div class="price-detail">주 5회 · 월 20회<br>스피킹 또는 라이팅</div>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">베테랑</div>
+        <div class="price-type">100분 수업</div>
+        <div class="price-amount">478,000</div>
+        <div class="price-unit">원 / 월</div>
+        <div class="price-detail">주 5회 · 월 20회<br>스피킹 또는 라이팅</div>
+      </div>
+      <div class="price-card gold">
+        <div class="price-tier">프리미엄</div>
+        <div class="price-type">100분 수업</div>
+        <div class="price-amount">578,000</div>
+        <div class="price-unit">원 / 월</div>
+        <div class="price-detail">주 5회 · 월 20회<br>스피킹 또는 라이팅</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="section-wrap">
+  <div class="inner">
+    <div class="section-label">수강생 후기</div>
+    <h2 class="section-title">실제 수강생들의 <em>변화</em></h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-score">스피킹 7.0 → 9.0</div>
+        <div class="review-title">아이엘츠스피킹7.0→9.0, 오버롤 9.0</div>
+        <div class="review-text">스피킹에서 2점이나 향상해서 만점을 받을 수 있었던건 정말 쌤의 수업 영향이 너무 컸다고 신랑이 시험 끝나고 너무 감사하다고 거들 이야기를 하더라구요.</div>
+        <div class="review-author"><div class="review-avatar">손</div><div class="review-name">손*원님</div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-score">6.5 → 7.5 (2달)</div>
+        <div class="review-title">아이엘츠스피킹 2달수업, 6.5→7.5</div>
+        <div class="review-text">단기간에 성적이 필요하신 분, 한국에서만 공부해서 갑작스러운 영어 질문에 적절하게 대응하기 어려운 분들에게 정말 강력하게 추천드립니다.</div>
+        <div class="review-author"><div class="review-avatar">양</div><div class="review-name">양*아님</div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-score">1달만에 6.5</div>
+        <div class="review-title">발목잡던 아이엘츠시험, 1달만에 6.5</div>
+        <div class="review-text">다른곳에서 거의 1~2년 정도 수업받고 5.5를 벗어나지 못했는데, 1달만에 6.0, 6.5가 나왔어요! 이후에도 선생님과 함께 7.0까지 도전해보려고 해요!</div>
+        <div class="review-author"><div class="review-avatar">이</div><div class="review-name">이*연님</div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-score">1달 수업 후 7.0</div>
+        <div class="review-title">아이엘츠스피킹 1달 수업 후 7.0 달성</div>
+        <div class="review-text">슈퍼잉글리쉬는 스피킹에선 최고인것 같아요. 선생님은 실력, 성격, 성실성 모두를 제대로 갖추고 있어요. 덕분에 스피킹 실력이 늘었고 목표달성 했네요.</div>
+        <div class="review-author"><div class="review-avatar">유</div><div class="review-name">유*혜님</div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-score">스피킹 8.0 라이팅 7.0</div>
+        <div class="review-title">다음달에 환갑, 스피킹 8.0 라이팅 7.0</div>
+        <div class="review-text">저는 다음 달에 환갑이에요. 그렇지만 슈퍼잉글리쉬를 믿고 도전했죠. 문법적 오류를 즉각적으로 잡아내고 바로 교정해 주셔서 도움이 많이 됐어요.</div>
+        <div class="review-author"><div class="review-avatar">김</div><div class="review-name">김*수님</div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-score">2개월 후 시험 성공</div>
+        <div class="review-title">2개월 수업 후 아이엘츠시험 성공</div>
+        <div class="review-text">한달 수업하니 답변의 틀이 생겼고 두달 수업하니 점수를 올릴 수 있는 표현이 익숙하게 나오더라구요. 이제는 시험의 압박에서 벗어나 재미있는 영어공부를 하려고 해요.</div>
+        <div class="review-author"><div class="review-avatar">이</div><div class="review-name">이*연님</div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-score">2주 수업 후 오버롤 5.5</div>
+        <div class="review-title">IELTS시험 2주 수업 후 오버롤 5.5 달성</div>
+        <div class="review-text">슈퍼잉글리쉬의 선생님들과 클래스를 진행하면서 매우 효율적이라는 생각이 들었어요. 상담 매니저분들도 정말 친절하시고 대응도 빨라서 만족했습니다.</div>
+        <div class="review-author"><div class="review-avatar">이</div><div class="review-name">이*경님</div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-score">스피킹5.5 / 라이팅6.5</div>
+        <div class="review-title">한달반 수업후 스피킹5.5 / 라이팅6.5</div>
+        <div class="review-text">선생님이 너무 밝고 친절하셔서 수업하면서 에너지를 얻어갔던 것 같아요. 최대한 제 에너지를 끌어내서 자신감을 올려주시려고 노력하시는 모습에 감동했고 덩달아 저도 열심히 하게 되더라고요.</div>
+        <div class="review-author"><div class="review-avatar">기</div><div class="review-name">기*은님</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="inner">
+    <h2><span class="quote">"</span>목표 밴드,<br><span>이번엔 됩니다.</span><span class="quote">"</span></h2>
+    <div class="cta-sub">스피킹·라이팅 집중 1:1 튜터링</div>
+    <p>지금 바로 무료 상담을 받아보세요.<br>목표 밴드와 현재 상황을 알려주시면 맞춤 플랜을 안내해드립니다.</p>
+    <a href="#" class="cta-btn">카카오톡으로 상담하기 💬</a>
+  </div>
+</div>
+
+</body>
+</html>
