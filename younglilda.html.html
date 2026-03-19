@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>영왜잘 × 영릴다 | 내 생활 영어 시작</title>
+<meta property="og:title" content="영왜잘 × 영릴다 | 내 생활 영어 시작">
+<meta property="og:description" content="뉴질랜드 1년, 호주 5년 클로이가 알려주는 유학맘 실전 영어. 사용할 일 없는 영어는 외우지 말아요.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;900&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFEF9;
+    --charcoal: #1C1C1C;
+    --mid: #555;
+    --light: #999;
+    --accent: #C8A96E;
+    --accent-light: #E8D9B8;
+    --accent-dark: #9E7C42;
+    --green: #4A7C5C;
+    --green-light: #EAF2ED;
+    --divider: #E8E0D0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px 60px;
+    text-align: center;
+    position: relative;
+    background: var(--warm-white);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #E8D9B8 0%, transparent 70%);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #EAF2ED 0%, transparent 70%);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    background: var(--accent-light);
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    font-weight: 500;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(52px, 10vw, 96px);
+    line-height: 1.0;
+    letter-spacing: -2px;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent-dark);
+  }
+
+  .hero-subtitle-ko {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(14px, 3vw, 20px);
+    font-weight: 300;
+    color: var(--mid);
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-desc {
+    max-width: 480px;
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.9;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--charcoal);
+    color: #fff;
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .btn-primary:hover { background: #333; transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--charcoal);
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border: 1.5px solid var(--charcoal);
+    transition: all 0.2s;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .btn-outline:hover { background: var(--charcoal); color: #fff; transform: translateY(-2px); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+  .hero-scroll span { font-size: 10px; letter-spacing: 2px; color: var(--light); text-transform: uppercase; }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  /* ── ABOUT CHLOE ── */
+  .about {
+    padding: 100px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .about-intro {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    line-height: 1.8;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+  }
+
+  .about-intro strong {
+    color: var(--accent-dark);
+    font-weight: 600;
+  }
+
+  .about-detail {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.9;
+  }
+
+  /* ── PRODUCTS ── */
+  .products {
+    padding: 80px 24px;
+    background: var(--charcoal);
+    color: #fff;
+  }
+
+  .products-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .products-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .products-header .section-label {
+    color: var(--accent);
+  }
+
+  .products-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .product-grid {
+    display: grid;
+     grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .product-card {
+    background: #252525;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .product-card:hover { background: #2C2C2C; }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+  .product-card:hover::before { transform: scaleX(1); }
+
+  .product-number {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .product-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+
+  .product-name-ko {
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+
+  .product-desc {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.9;
+    margin-bottom: 32px;
+  }
+
+  .product-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .product-features li {
+    font-size: 13px;
+    color: #ccc;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .product-features li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* 목차 */
+  .toc-section {
+    background: #1A1A1A;
+    padding: 48px 40px;
+    grid-column: 1 / -1;
+  }
+
+  .toc-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 40px;
+  }
+
+  .toc-item {
+    font-size: 13px;
+    color: #bbb;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .toc-num {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+    min-width: 20px;
+  }
+
+  /* ── WHO IS THIS FOR ── */
+  .for-whom {
+    padding: 100px 24px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .for-whom-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .for-whom-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .card-item {
+    background: var(--warm-white);
+    border: 1px solid var(--divider);
+    border-radius: 16px;
+    padding: 32px 28px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+
+  .card-emoji { font-size: 28px; margin-bottom: 16px; display: block; }
+  .card-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--charcoal); }
+  .card-desc { font-size: 13px; color: var(--mid); line-height: 1.8; }
+
+  /* ── PRICING ── */
+  .pricing {
+    padding: 100px 24px;
+    background: var(--warm-white);
+  }
+
+  .pricing-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .pricing-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--charcoal);
+    line-height: 1.2;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .price-card {
+    border: 1.5px solid var(--divider);
+    border-radius: 20px;
+    padding: 40px 36px;
+    background: var(--cream);
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .price-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+  .price-card.featured {
+    background: var(--charcoal);
+    border-color: var(--charcoal);
+    color: #fff;
+  }
+
+  .price-badge {
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--charcoal);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .price-plan {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .price-card.featured .price-plan { color: var(--accent); }
+
+  .price-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .price-card.featured .price-name { color: #fff; }
+
+  .price-original {
+    font-size: 13px;
+    color: var(--light);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .price-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    line-height: 1.1;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+  .price-card.featured .price-amount { color: #fff; }
+
+  .price-period {
+    font-size: 13px;
+    color: var(--mid);
+    margin-bottom: 28px;
+  }
+  .price-card.featured .price-period { color: #aaa; }
+
+  .price-divider {
+    height: 1px;
+    background: var(--divider);
+    margin-bottom: 24px;
+  }
+  .price-card.featured .price-divider { background: #3a3a3a; }
+
+  .price-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .price-includes li {
+    font-size: 13px;
+    color: var(--mid);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .price-card.featured .price-includes li { color: #ccc; }
+
+  .price-includes li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .price-highlight {
+    background: var(--green-light);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 500;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .btn-price {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+
+  .btn-price-outline {
+    background: transparent;
+    border: 1.5px solid var(--charcoal);
+    color: var(--charcoal);
+  }
+  .btn-price-outline:hover { background: var(--charcoal); color: #fff; }
+
+  .btn-price-filled {
+    background: var(--accent);
+    color: var(--charcoal);
+  }
+  .btn-price-filled:hover { background: var(--accent-dark); color: #fff; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 48px 24px;
+    text-align: center;
+    border-top: 1px solid var(--divider);
+  }
+
+  .footer-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .footer-sub {
+    font-size: 13px;
+    color: var(--light);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .toc-section { grid-column: 1; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .product-card { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-badge">뉴질랜드 1년 · 호주 5년 클로이의 생활영어</span>
+  <h1 class="hero-title">영왜잘<br><em>&</em> 영릴다</h1>
+  <p class="hero-subtitle-ko">내 생활 밀착 영어, 지금 시작합니다</p>
+  <p class="hero-desc">
+    사용할 일 없는 영어는 외우지 말아요.<br>
+    내 생활에서 매일 쓰는 영어만 골라,<br>
+    머리가 아닌 입에 붙이는 실전 영어 자료입니다.
+  </p>
+  <div class="hero-cta">
+    <a href="#pricing" class="btn-primary">지금 시작하기</a>
+    <a href="#products" class="btn-outline">자료 살펴보기</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about reveal">
+  <span class="section-label">About Chloe</span>
+  <p class="about-intro">
+    갑자기 낯선 외국에서<br>
+    아이를 케어해야 하는 어머니들을 위해,<br>
+    <strong>클로이가 직접 현장에서 쓴 영어</strong>만 담았습니다.
+  </p>
+  <p class="about-detail">
+    뉴질랜드 1년, 호주 5년.<br>
+    아이 친구 엄마들과 어울리고, 병원·학교·카페에서<br>
+    실제로 매일 사용하는 영어를 정리했어요.
+  </p>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-inner">
+    <div class="products-header reveal">
+      <span class="section-label" style="color:var(--accent)">두 가지 자료</span>
+      <h2 class="products-title">상황별 실전 영어<br>+ 일상 스피킹 확장</h2>
+    </div>
+
+    <div class="product-grid">
+      <!-- 영왜잘 -->
+      <div class="product-card reveal">
+        <span class="product-number">01</span>
+        <h3 class="product-name">영왜잘</h3>
+        <p class="product-name-ko">너 갑자기 영어 왜 이렇게 잘함?</p>
+        <p class="product-desc">
+          머리 대신 입이 활약하는 상황별 영어.<br>
+          해외 생활에서 반드시 맞닥뜨리는 10가지 상황,<br>
+          필수 단어 · 문장 · 대화문 · 영어일기 스크립트까지.
+        </p>
+        <ul class="product-features">
+          <li>10가지 실전 상황 완벽 커버</li>
+          <li>필수 단어 + 필수 문장 + 대화문</li>
+          <li>영어일기 스크립트 포함</li>
+          <li>유학맘이 매일 쓰는 표현만</li>
+        </ul>
+      </div>
+
+      <!-- 영릴다 -->
+      <div class="product-card reveal">
+        <span class="product-number">02</span>
+        <h3 class="product-name">영릴다</h3>
+        <p class="product-name-ko">영어 릴스 다이어리</p>
+        <p class="product-desc">
+          내 일상과 밀접한 주제로 기본문장 4개 + 원어민 구어체 4개,<br>
+          실전 대화문까지 연습해요.<br>
+          슬랭 없이 어디서든 예의바르고 좋은 이미지의 영어.
+        </p>
+        <ul class="product-features">
+          <li>기본문장 4개 → 쉽게 스피킹</li>
+          <li>원어민 구어체 4개 → 알아듣기 + 확장</li>
+          <li>실전 대화문으로 연습</li>
+          <li>품위 있는 원어민 표현</li>
+        </ul>
+      </div>
+
+      <!-- 영왜잘 목차 -->
+      <div class="toc-section reveal">
+        <span class="toc-label">영왜잘 목차 — 10 Topics</span>
+        <div class="toc-grid">
+          <div class="toc-item"><span class="toc-num">01</span> 🏥 병원 & 약국</div>
+          <div class="toc-item"><span class="toc-num">02</span> 💬 엄마들이랑 스몰톡</div>
+          <div class="toc-item"><span class="toc-num">03</span> 🌸 플레이데이트</div>
+          <div class="toc-item"><span class="toc-num">04</span> 🛝 놀이터 실랑이 중재</div>
+          <div class="toc-item"><span class="toc-num">05</span> 📝 학원 등록하기</div>
+          <div class="toc-item"><span class="toc-num">06</span> ☕ 커피 커스텀 주문</div>
+          <div class="toc-item"><span class="toc-num">07</span> 🍽️ 카페 & 레스토랑 주문</div>
+          <div class="toc-item"><span class="toc-num">08</span> 🛍️ 쇼핑 & 반품</div>
+          <div class="toc-item"><span class="toc-num">09</span> 😊 직원이랑 스몰톡</div>
+          <div class="toc-item"><span class="toc-num">10</span> 👩‍🏫 선생님 대화</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section class="for-whom">
+  <div class="for-whom-header reveal">
+    <span class="section-label">이런 분께 딱 맞아요</span>
+    <h2 class="for-whom-title">갑자기 해외에 왔는데<br>영어가 막막한 분</h2>
+  </div>
+  <div class="cards-row">
+    <div class="card-item reveal">
+      <span class="card-emoji">✈️</span>
+      <p class="card-title">조기유학 동반 어머니</p>
+      <p class="card-desc">아이 학교생활, 친구 엄마들과의 관계, 병원까지 — 매일 영어가 필요한 분</p>
+    </div>
+    <div class="card-item reveal">
+      <span class="card-emoji">🗣️</span>
+      <p class="card-title">머릿속엔 있는데 입이 안 떨어지는 분</p>
+      <p class="card-desc">알긴 아는데 막상 상황이 오면 생각이 안 나는, 그 답답함을 아는 분</p>
+    </div>
+    <div class="card-item reveal">
+      <span class="card-emoji">🌏</span>
+      <p class="card-title">해외 거주 중인 분</p>
+      <p class="card-desc">현지에서 자연스럽게 어울리고 싶은, 일상 속 영어를 늘리고 싶은 분</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header reveal">
+      <span class="section-label">Pricing</span>
+      <h2 class="pricing-title">지금 시작하는 방법</h2>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- PDF Plan -->
+      <div class="price-card reveal">
+        <p class="price-plan">PDF Plan</p>
+        <h3 class="price-name">영왜잘 + 영릴다<br>전체 PDF + 카페스터디</h3>
+        <p class="price-amount">₩40,000</p>
+        <p class="price-period">1회 결제 · 평생 소장</p>
+        <div class="price-divider"></div>
+        <ul class="price-includes">
+          <li>영왜잘 전체 PDF</li>
+          <li>영릴다 전체 PDF</li>
+          <li>카페스터디 참여권</li>
+        </ul>
+        <button class="btn-price btn-price-outline">구매 문의하기</button>
+      </div>
+
+      <!-- Speaking Plan -->
+      <div class="price-card featured reveal">
+        <div class="price-badge">🏆 추천 플랜</div>
+        <p class="price-plan">영어 스피킹 늘리는 실속 패키지</p>
+        <h3 class="price-name">PDF + 화상영어<br>3개월 패키지</h3>
+        <p class="price-original">월 ₩60,000 → 10% 할인</p>
+        <p class="price-amount">₩54,000<span style="font-size:18px;font-weight:300">/월</span></p>
+        <p class="price-period">3개월 총 ₩162,000 · PDF 무료 포함</p>
+        <div class="price-divider"></div>
+        <ul class="price-includes">
+          <li>영왜잘 + 영릴다 전체 PDF <span style="color:var(--accent);font-weight:600">무료</span></li>
+          <li>카페스터디 참여권</li>
+          <li>주 1회 40분 화상영어 수업</li>
+          <li>총 12회 · 3개월 과정</li>
+        </ul>
+        <div class="price-highlight">
+          🎁 PDF 정가 ₩40,000 무료 제공
+        </div>
+        <button class="btn-price btn-price-filled">구매 문의하기</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-brand">영왜잘 × 영릴다</p>
+  <p class="footer-sub">클로이의 실전 생활영어 · 문의는 카카오톡으로</p>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
