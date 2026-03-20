@@ -13,8 +13,8 @@
     --cream: #FAF7F2;
     --warm-white: #FFFEF9;
     --charcoal: #1C1C1C;
-    --mid: #555;
-    --light: #999;
+    --mid: #444;
+    --light: #888;
     --accent: #C8A96E;
     --accent-light: #E8D9B8;
     --accent-dark: #9E7C42;
@@ -31,8 +31,8 @@
     background: var(--cream);
     color: var(--charcoal);
     font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
+    font-weight: 400;
+    line-height: 1.8;
     overflow-x: hidden;
   }
 
@@ -295,8 +295,8 @@
   }
 
   .product-desc {
-    font-size: 14px;
-    color: #aaa;
+    font-size: 15px;
+    color: #ccc;
     line-height: 1.9;
     margin-bottom: 32px;
   }
@@ -309,8 +309,8 @@
   }
 
   .product-features li {
-    font-size: 13px;
-    color: #ccc;
+    font-size: 14px;
+    color: #ddd;
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -331,7 +331,7 @@
   }
 
   .toc-label {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--accent);
@@ -347,15 +347,15 @@
   }
 
   .toc-item {
-    font-size: 13px;
-    color: #bbb;
+    font-size: 15px;
+    color: #ddd;
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
   .toc-num {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--accent);
     font-weight: 500;
     min-width: 20px;
@@ -544,6 +544,7 @@
   }
 
   .btn-price {
+    display: block;
     width: 100%;
     padding: 16px;
     border-radius: 12px;
@@ -554,6 +555,8 @@
     font-family: 'Noto Sans KR', sans-serif;
     letter-spacing: 0.5px;
     transition: all 0.2s;
+    text-decoration: none;
+    text-align: center;
   }
 
   .btn-price-outline {
@@ -616,6 +619,22 @@
     .toc-grid { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
     .product-card { padding: 36px 24px; }
+    .price-card { padding: 32px 24px; }
+    .hero-desc { font-size: 16px; }
+    .about-detail { font-size: 15px; }
+    .product-desc { font-size: 15px; }
+    .product-features li { font-size: 15px; }
+    .toc-item { font-size: 15px; }
+    .card-desc { font-size: 15px; }
+    .price-includes li { font-size: 15px; }
+    .price-period { font-size: 15px; }
+    .price-plan { font-size: 13px; }
+    .price-name { font-size: 20px; }
+    .btn-price { font-size: 16px; padding: 18px; }
+    .cards-row { grid-template-columns: 1fr; }
+    .toc-grid { gap: 12px; }
+    .hero-cta { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-outline { width: 100%; max-width: 320px; text-align: center; }
   }
 </style>
 </head>
@@ -665,7 +684,6 @@
     </div>
 
     <div class="product-grid">
-      <!-- 영왜잘 -->
       <div class="product-card reveal">
         <span class="product-number">01</span>
         <h3 class="product-name">영왜잘</h3>
@@ -683,7 +701,6 @@
         </ul>
       </div>
 
-      <!-- 영릴다 -->
       <div class="product-card reveal">
         <span class="product-number">02</span>
         <h3 class="product-name">영릴다</h3>
@@ -701,26 +718,216 @@
         </ul>
       </div>
 
-      <!-- 영왜잘 목차 -->
       <div class="toc-section reveal">
-        <span class="toc-label">영왜잘 목차 — 10 Topics</span>
+        <span class="toc-label">영왜잘 목차 — 12 Topics</span>
         <div class="toc-grid">
           <div class="toc-item"><span class="toc-num">01</span> 🏥 병원 & 약국</div>
-          <div class="toc-item"><span class="toc-num">02</span> 💬 엄마들이랑 스몰톡</div>
+          <div class="toc-item"><span class="toc-num">02</span> 💬 엄마들 스몰톡</div>
           <div class="toc-item"><span class="toc-num">03</span> 🌸 플레이데이트</div>
           <div class="toc-item"><span class="toc-num">04</span> 🛝 놀이터 실랑이 중재</div>
-          <div class="toc-item"><span class="toc-num">05</span> 📝 학원 등록하기</div>
-          <div class="toc-item"><span class="toc-num">06</span> ☕ 커피 커스텀 주문</div>
-          <div class="toc-item"><span class="toc-num">07</span> 🍽️ 카페 & 레스토랑 주문</div>
-          <div class="toc-item"><span class="toc-num">08</span> 🛍️ 쇼핑 & 반품</div>
-          <div class="toc-item"><span class="toc-num">09</span> 😊 직원이랑 스몰톡</div>
-          <div class="toc-item"><span class="toc-num">10</span> 👩‍🏫 선생님 대화</div>
+          <div class="toc-item"><span class="toc-num">05</span> 📝 학원 등록 & 상담</div>
+          <div class="toc-item"><span class="toc-num">06</span> 🏫 선생님과의 대화</div>
+          <div class="toc-item"><span class="toc-num">07</span> ☕ 커피 주문</div>
+          <div class="toc-item"><span class="toc-num">08</span> 🍽️ 식당 이용 & 요청</div>
+          <div class="toc-item"><span class="toc-num">09</span> 🛍️ 쇼핑 & 반품</div>
+          <div class="toc-item"><span class="toc-num">10</span> 😊 직원과의 스몰톡</div>
+          <div class="toc-item"><span class="toc-num">11</span> 🏠 집 & 생활 문제</div>
+          <div class="toc-item"><span class="toc-num">12</span> 📱 전화 영어</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PREVIEW -->
+<section style="padding: 80px 24px; background: #FAF7F2;">
+  <div style="max-width: 860px; margin: 0 auto;">
+    <div class="reveal" style="text-align:center; margin-bottom:40px;">
+      <span style="font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-dark); font-weight:700; display:block; margin-bottom:12px;">PREVIEW</span>
+      <h2 style="font-family:'DM Serif Display',serif; font-size:clamp(26px,5vw,40px); color:var(--charcoal); line-height:1.3;">이런 내용이에요</h2>
+    </div>
+    <!-- 탭 버튼 -->
+    <div style="display:flex; gap:8px; margin-bottom:28px; justify-content:center;">
+      <button onclick="showTab('younglilda')" id="btn-younglilda" style="padding:12px 28px; border-radius:100px; border:none; font-size:15px; font-weight:700; font-family:'Noto Sans KR',sans-serif; cursor:pointer; background:var(--charcoal); color:#fff;">영왜잘</button>
+      <button onclick="showTab('youngrilda')" id="btn-youngrilda" style="padding:12px 28px; border-radius:100px; border:1.5px solid #ccc; font-size:15px; font-weight:700; font-family:'Noto Sans KR',sans-serif; cursor:pointer; background:transparent; color:#888;">영릴다</button>
+    </div>
+
+    <!-- 영왜잘 탭 -->
+    <div id="preview-younglilda">
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px; margin-bottom:16px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:20px;">🚗 방과후 활동 & 스케줄 — 핵심 표현</div>
+        <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:20px;">
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">I heard Julie started soccer recently. How is it? Is she enjoying it?<span style="color:#666; font-size:13px; display:block;">줄리가 최근에 축구 시작했다고 들었어요. 거기 어때요? 줄리가 좋아하나요?</span></div>
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">I'm actually thinking about signing my kids up too. That's why I'm asking.<span style="color:#666; font-size:13px; display:block;">사실 우리 애들도 시켜볼까 생각 중이라 여쭤봤어요.</span></div>
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">My kids are doing swimming and tennis now. On Wednesdays, we have activities back-to-back.<span style="color:#666; font-size:13px; display:block;">우리 애들은 지금 수영이랑 테니스 하고 있어요. 수요일은 스케줄이 연달아 있어서 좀 바빠요.</span></div>
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">We should grab a coffee sometime after drop-off.<span style="color:#666; font-size:13px; display:block;">애들 학교 내려주고 언제 커피 한잔해요.</span></div>
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">Catch you later! / See you at pick-up!<span style="color:#666; font-size:13px; display:block;">나중에 봐요! / 픽업 때 봐요!</span></div>
+        </div>
+        <div style="padding:16px 18px; background:#faf7f2; border-radius:10px; border-left:3px solid var(--accent);">
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9; margin-bottom:8px;">💡 <strong style="color:var(--accent-dark);">실전 뉘앙스 포인트</strong></p>
+          <p style="font-size:13px; color:#444; line-height:1.9;">1. <em style="color:#1c1c1c; font-weight:600;">"How is it?"</em> — 장소나 수업의 퀄리티가 어떤지 묻는 아주 유용한 표현<br>2. <em style="color:#1c1c1c; font-weight:600;">"Thinking about signing up"</em> — 질문하는 이유가 확실해져서 상대방도 더 자세히 정보를 줘요<br>3. <em style="color:#1c1c1c; font-weight:600;">"I heard ~"</em> — "듣기로는 ~한다던데"로 시작하면 대화가 아주 자연스럽게 풀려요</p>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px; margin-bottom:16px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:20px;">🏫 방과후 스몰톡 — 대화문</div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="font-size:15px; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">A: </span><span style="color:#1c1c1c;">Hi Chloe! How's it going?</span><span style="color:#666; font-size:13px;"> — 하이 클로이! 잘 지내요?</span></div>
+          <div style="font-size:15px; line-height:1.9;"><span style="color:#2d6b45; font-weight:700;">B: </span><span style="color:#1c1c1c;">Good thanks, you? Traffic was a nightmare this morning, wasn't it?</span><span style="color:#666; font-size:13px;"> — 좋아요, 그쪽은요? 오늘 아침 차 진짜 많이 막혔죠, 그쵸?</span></div>
+          <div style="font-size:15px; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">A: </span><span style="color:#1c1c1c;">Tell me about it! I barely made it. Anyway, how is Daniel settling in this term?</span><span style="color:#666; font-size:13px;"> — 말도 마세요! 겨우 도착했어요. 다니엘 이번 학기 적응은 잘하고 있나요?</span></div>
+          <div style="font-size:15px; line-height:1.9;"><span style="color:#2d6b45; font-weight:700;">B: </span><span style="color:#1c1c1c;">He's loving it, thanks. Oh, I heard Julie started soccer recently. How is it? Is she enjoying it?</span><span style="color:#666; font-size:13px;"> — 정말 좋아해요. 줄리가 최근에 축구 시작했다고 들었어요. 어때요?</span></div>
+          <div style="font-size:15px; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">A: </span><span style="color:#1c1c1c;">She absolutely loves it! She has practice twice a week.</span><span style="color:#666; font-size:13px;"> — 완전 좋아해요! 일주일에 두 번 연습해요.</span></div>
+          <div style="font-size:15px; line-height:1.9;"><span style="color:#2d6b45; font-weight:700;">B: </span><span style="color:#1c1c1c;">That's great. I'm actually thinking about signing my kids up too. My kids are doing swimming now, but on Wednesdays, we have activities back-to-back.</span><span style="color:#666; font-size:13px;"> — 잘됐네요. 사실 우리 애들도 시켜볼까 생각 중이에요. 수요일은 일정이 연달아 있어서 바빠요.</span></div>
+          <div style="font-size:15px; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">A: </span><span style="color:#1c1c1c;">I know the feeling. Anyway, I'd better go.</span><span style="color:#666; font-size:13px;"> — 그 기분 알죠. 어쨌든 저 이제 가봐야겠어요.</span></div>
+          <div style="font-size:15px; line-height:1.9;"><span style="color:#2d6b45; font-weight:700;">B: </span><span style="color:#1c1c1c;">Sure. We should grab a coffee sometime after drop-off. Have a good one!</span><span style="color:#666; font-size:13px;"> — 네. 언제 애들 내려주고 커피 한잔해요. 좋은 하루 보내시고요!</span></div>
+          <div style="font-size:15px; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">A: </span><span style="color:#1c1c1c;">Sounds good, let's do that! Bye!</span><span style="color:#666; font-size:13px;"> — 좋아요, 그렇게 해요! 안녕히 가세요!</span></div>
+        </div>
+        <div style="margin-top:20px; padding:16px 18px; background:#faf7f2; border-radius:10px; border-left:3px solid var(--accent);">
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;">💡 <strong style="color:var(--accent-dark);">다이얼로그 포인트</strong><br>
+          <em style="color:#1c1c1c; font-weight:600;">Tell me about it!</em> — 내 말이 그 말이야! · <em style="color:#1c1c1c; font-weight:600;">I'd better go</em> — 저 이제 가봐야겠어요 · <em style="color:#1c1c1c; font-weight:600;">back-to-back</em> — 연속으로, 쉬는 틈 없이</p>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px; margin-bottom:16px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:20px;">✏️ 빈칸 채우기 — 방과후 스몰톡</div>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">1.</span> Hi Chloe! How's ___? <span style="color:#666;">— 하이 클로이! 잘 지내요?</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">2.</span> Good thanks, ___? Traffic was a ___ this morning, ___? <span style="color:#666;">— 좋아요, 그쪽은요? 오늘 아침 차 진짜 많이 막혔죠, 그쵸?</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">3.</span> ___! I barely ___. Anyway, how is Daniel ___ this term? <span style="color:#666;">— 말도 마세요! 겨우 도착했어요.</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">4.</span> He's ___, thanks. Oh, I heard Julie ___ soccer recently. Is she ___? <span style="color:#666;">— 정말 좋아해요. 줄리가 최근에 축구 시작했다고 들었어요.</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">5.</span> She absolutely ___! She has practice ___ a week. <span style="color:#666;">— 완전 좋아해요! 일주일에 두 번 연습해요.</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">6.</span> I'm actually thinking about ___ my kids up too. On Wednesdays, we have activities ___. <span style="color:#666;">— 사실 우리 애들도 시켜볼까 생각 중이에요. 수요일은 스케줄이 연달아 물려 있네요.</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">7.</span> I know ___. Anyway, I'd better ___. <span style="color:#666;">— 그 기분 알죠. 어쨌든 저 이제 가봐야겠어요.</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">8.</span> We should ___ a coffee sometime after ___. ___! <span style="color:#666;">— 언제 애들 내려주고 커피 한잔해요. 좋은 하루 보내시고요!</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">9.</span> Sounds good, ___! Bye! <span style="color:#666;">— 좋아요, 그렇게 해요! 안녕히 가세요!</span></p>
+        </div>
+        <div style="padding:14px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;">
+          <p style="font-size:13px; color:var(--accent-dark); font-weight:700; margin-bottom:8px;">✅ 정답</p>
+          <p style="font-size:13px; color:#444; line-height:2;">① it going ② you / nightmare / wasn't it ③ Tell me about it / made it / settling in ④ loving it / started / enjoying it ⑤ loves it / twice ⑥ signing / back-to-back ⑦ the feeling / go ⑧ grab / drop-off / Have a good one ⑨ let's do that</p>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px; margin-bottom:16px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:16px;">🎬 릴스 스크립트 — 엄마의 일상</div>
+        <p style="font-size:16px; color:#1c1c1c; line-height:2; margin-bottom:16px;">I just finished the morning school run. The traffic was really heavy this morning. I had a quick chat with one of my kid's friends' mums about soccer. I'm actually thinking about signing my kids up too. Wednesday is our busiest day because we have activities back-to-back. I hope you all have a lovely day!</p>
+        <p style="font-size:14px; color:#555; line-height:1.9;">방금 아침 등교 시키고 왔어요. 오늘 아침엔 차가 정말 많이 막히더라고요. 아이 친구 엄마랑 축구 팀에 대해서 잠깐 이야기 나눴어요. 사실 저도 우리 애들 등록시킬까 생각 중이거든요. 수요일은 활동들이 연속으로 있어서 우리 집에서 가장 바쁜 날이에요. 여러분 모두 즐거운 하루 보내세요!</p>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:20px;">📝 빈칸 채우기 — 릴스 스크립트</div>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">1.</span> I just ___ the morning ___ ___. <span style="color:#666;">— 방금 아침 등교 시키고 왔어요.</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">2.</span> The traffic was really ___ this morning. <span style="color:#666;">— 오늘 아침엔 차가 정말 많이 막히더라고요.</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">3.</span> I had a ___ ___ with one of my kid's friends' mums. <span style="color:#666;">— 아이 친구 엄마랑 잠깐 이야기 나눴어요.</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">4.</span> I'm actually thinking about ___ my kids ___ too. <span style="color:#666;">— 사실 저도 우리 애들 등록시킬까 생각 중이거든요.</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">5.</span> Wednesday is our busiest day because we have activities ___. <span style="color:#666;">— 수요일은 활동들이 연속으로 있어서 우리 집에서 가장 바쁜 날이에요.</span></p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;"><span style="color:var(--accent-dark); font-weight:700;">6.</span> I hope you all have a ___ ___! <span style="color:#666;">— 여러분 모두 즐거운 하루 보내세요!</span></p>
+        </div>
+        <div style="padding:14px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;">
+          <p style="font-size:13px; color:var(--accent-dark); font-weight:700; margin-bottom:6px;">✅ 정답</p>
+          <p style="font-size:13px; color:#444; line-height:1.9;">1. finished / school run &nbsp; 2. heavy &nbsp; 3. quick chat &nbsp; 4. signing / up &nbsp; 5. back-to-back &nbsp; 6. lovely day</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 영릴다 탭 -->
+    <div id="preview-youngrilda" style="display:none;">
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px; margin-bottom:16px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:20px;">🗣️ 기본 뼈대 문장</div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">I need to go grocery shopping today.<span style="color:#666; font-size:13px; display:block;">오늘 장 보러 가야 해요.</span></div>
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">I always make a list before I go.<span style="color:#666; font-size:13px; display:block;">가기 전에 항상 리스트를 만들어요.</span></div>
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">Everything seems so expensive these days.<span style="color:#666; font-size:13px; display:block;">요즘 모든 게 다 비싼 것 같아요.</span></div>
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">Making a list helps you stick to your budget.<span style="color:#666; font-size:13px; display:block;">리스트를 만들면 예산을 지킬 수 있어요.</span></div>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px; margin-bottom:16px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:20px;">🎧 원어민 구어체</div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">I've got to hit the grocery store later today.<span style="color:#666; font-size:13px; display:block;">오늘 이따 마트 가야 해요.</span></div>
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">You should always jot down a list — otherwise you just go overboard.<span style="color:#666; font-size:13px; display:block;">너무 많이 사지 않으려면 꼭 리스트를 적어놔야 해요.</span></div>
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">Prices are just getting out of hand lately.<span style="color:#666; font-size:13px; display:block;">요즘 물가가 감당이 안돼요.</span></div>
+          <div style="font-size:15px; color:#1c1c1c; line-height:1.9;">It's so satisfying when you actually stick to your list and only grab the essentials.<span style="color:#666; font-size:13px; display:block;">리스트에 있는 것만 사고 꼭 필요한 것들만 집으면 진짜 뿌듯해요.</span></div>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px; margin-bottom:16px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:20px;">📌 핵심 표현 뜯어보기</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9; padding:12px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;"><span style="color:var(--accent-dark); font-weight:700;">① hit the + 장소</span> — ~에 가다, 들르다<br><span style="color:#333; font-style:italic;">I've got to hit the grocery store.</span></div>
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9; padding:12px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;"><span style="color:var(--accent-dark); font-weight:700;">② jot down</span> — 간단히 적다, 메모하다<br><span style="color:#333; font-style:italic;">You should always jot down a list before you go.</span></div>
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9; padding:12px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;"><span style="color:var(--accent-dark); font-weight:700;">③ go overboard</span> — 지나치게 하다, 너무 많이 사다<br><span style="color:#333; font-style:italic;">Otherwise you just go overboard.</span></div>
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9; padding:12px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;"><span style="color:var(--accent-dark); font-weight:700;">④ get out of hand</span> — 통제 불능이 되다<br><span style="color:#333; font-style:italic;">Prices are just getting out of hand lately.</span></div>
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9; padding:12px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;"><span style="color:var(--accent-dark); font-weight:700;">⑤ stick to</span> — 지키다, 고수하다<br><span style="color:#333; font-style:italic;">Stick to your list and only grab the essentials.</span></div>
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9; padding:12px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;"><span style="color:var(--accent-dark); font-weight:700;">⑥ grab the essentials</span> — 꼭 필요한 것들만 집다<br><span style="color:#333; font-style:italic;">Only grab the essentials.</span></div>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px; margin-bottom:16px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:20px;">📌 추가 표현</div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="padding:14px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;">
+            <p style="font-size:14px; color:var(--accent-dark); font-weight:700; margin-bottom:8px;">① grocery shopping / do the shopping / run errands</p>
+            <p style="font-size:14px; color:#333; line-height:1.9;"><em>I need to go grocery shopping.</em> — 식료품 장보기<br><em>I need to do the shopping.</em> — 장보기 전반<br><em>I've got errands to run.</em> — 볼일이 있다 (마트, 은행 등 포함)</p>
+          </div>
+          <div style="padding:14px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;">
+            <p style="font-size:14px; color:var(--accent-dark); font-weight:700; margin-bottom:8px;">② stick to your budget vs go overboard</p>
+            <p style="font-size:14px; color:#333; line-height:1.9;"><em>stick to your budget</em> = 예산을 지키다<br><em>go overboard</em> = 예산을 넘어 과하게 쓰다</p>
+          </div>
+          <div style="padding:14px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;">
+            <p style="font-size:14px; color:var(--accent-dark); font-weight:700; margin-bottom:8px;">③ these days / lately / recently</p>
+            <p style="font-size:14px; color:#333; line-height:1.9;"><em>these days</em> = 요즘 (현재 일반적 경향)<br><em>lately</em> = 최근 들어 (변화가 생긴 느낌)<br><em>recently</em> = 최근에 (특정 시점 기준)</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px; margin-bottom:16px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:20px;">✏️ 빈칸 채우기 — 기본문장</div>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;">I've got to ___ the grocery store later today.</p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;">You should always ___ a list — otherwise you just ___.</p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;">Prices are just ___ lately.</p>
+          <p style="font-size:14px; color:#1c1c1c; line-height:1.9;">It's so satisfying when you actually ___ your list and only ___.</p>
+        </div>
+        <div style="padding:14px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;">
+          <p style="font-size:13px; color:var(--accent-dark); font-weight:700; margin-bottom:6px;">✅ 정답</p>
+          <p style="font-size:13px; color:#444; line-height:1.9;">① hit &nbsp;② jot down / go overboard &nbsp;③ getting out of hand &nbsp;④ stick to / grab the essentials</p>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px; margin-bottom:16px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:20px;">💬 1:1 대화 PT</div>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div><p style="font-size:14px; color:var(--accent-dark); font-weight:700; margin-bottom:6px;">Q1. How often do you go grocery shopping?</p><p style="font-size:15px; color:#1c1c1c; margin-bottom:5px;">A few times a week. I've always got to hit the grocery store — there's always something I've run out of.</p><p style="font-size:13px; color:#555;">👉 일주일에 몇 번은 가요. 항상 뭐 하나씩 떨어져서 마트에 가야 하거든요.</p></div>
+          <div><p style="font-size:14px; color:var(--accent-dark); font-weight:700; margin-bottom:6px;">Q2. Do you make a shopping list before you go?</p><p style="font-size:15px; color:#1c1c1c; margin-bottom:5px;">Always. You should always jot down a list — otherwise you just go overboard.</p><p style="font-size:13px; color:#555;">👉 항상요. 리스트 안 쓰면 괜히 이것저것 많이 사게 되거든요.</p></div>
+          <div><p style="font-size:14px; color:var(--accent-dark); font-weight:700; margin-bottom:6px;">Q3. Have you noticed food prices going up lately?</p><p style="font-size:15px; color:#1c1c1c; margin-bottom:5px;">Yeah, prices are just getting out of hand lately. Everything seems so expensive these days.</p><p style="font-size:13px; color:#555;">👉 네, 요즘 물가가 진짜 감당 안 될 정도예요. 다 너무 비싸진 느낌이에요.</p></div>
+          <div><p style="font-size:14px; color:var(--accent-dark); font-weight:700; margin-bottom:6px;">Q4. Do you stick to your budget when you shop?</p><p style="font-size:15px; color:#1c1c1c; margin-bottom:5px;">I try to. It's so satisfying when you actually stick to your list and only grab the essentials.</p><p style="font-size:13px; color:#555;">👉 지키려고 노력해요. 리스트대로 꼭 필요한 것만 사면 진짜 뿌듯하더라고요.</p></div>
+          <div><p style="font-size:14px; color:var(--accent-dark); font-weight:700; margin-bottom:6px;">Q5. Do you prefer shopping alone or with someone?</p><p style="font-size:15px; color:#1c1c1c; margin-bottom:5px;">Alone, definitely. If I go with someone I always end up going overboard.</p><p style="font-size:13px; color:#555;">👉 무조건 혼자요. 누구랑 같이 가면 꼭 과하게 사게 되더라고요.</p></div>
+          <div><p style="font-size:14px; color:var(--accent-dark); font-weight:700; margin-bottom:6px;">Q6. Any tips for not overspending at the grocery store?</p><p style="font-size:15px; color:#1c1c1c; margin-bottom:5px;">Always make a list before you go. Making a list helps you stick to your budget — it really works.</p><p style="font-size:13px; color:#555;">👉 가기 전에 리스트 꼭 쓰세요. 그게 예산 지키는 데 진짜 도움돼요. 효과 있어요.</p></div>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e8d9b8; border-radius:16px; padding:28px 24px;">
+        <div style="font-size:12px; letter-spacing:2px; color:var(--accent-dark); font-weight:700; text-transform:uppercase; margin-bottom:16px;">✏️ 빈칸 채우기 — 대화문</div>
+        <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:20px;">
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9;">I've always got to ___ the grocery store — there's always something I've ___.<span style="color:#666; font-size:13px; display:block;">일주일에 몇 번은 가요. 항상 뭐 하나씩 떨어져서 마트에 가야 하거든요.</span></div>
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9;">You should always ___ a list — otherwise you just ___.<span style="color:#666; font-size:13px; display:block;">리스트 안 쓰면 괜히 이것저것 많이 사게 되거든요.</span></div>
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9;">Prices are just ___ lately.<span style="color:#666; font-size:13px; display:block;">요즘 물가가 진짜 감당 안 될 정도예요.</span></div>
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9;">It's so satisfying when you actually ___ your list and only ___.<span style="color:#666; font-size:13px; display:block;">리스트대로 꼭 필요한 것만 사면 진짜 뿌듯하더라고요.</span></div>
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9;">If I go with someone I always ___.<span style="color:#666; font-size:13px; display:block;">누구랑 같이 가면 꼭 과하게 사게 되더라고요.</span></div>
+          <div style="font-size:14px; color:#1c1c1c; line-height:1.9;">Making a list helps you ___ your budget.<span style="color:#666; font-size:13px; display:block;">그게 예산 지키는 데 진짜 도움돼요.</span></div>
+        </div>
+        <div style="padding:14px 16px; background:#faf7f2; border-radius:10px; border:1px solid #e8d9b8;">
+          <p style="font-size:13px; color:var(--accent-dark); font-weight:700; margin-bottom:6px;">✅ 정답</p>
+          <p style="font-size:13px; color:#444; line-height:1.9;">① hit / run out of &nbsp; ② jot down / go overboard &nbsp; ③ getting out of hand &nbsp; ④ stick to / grab the essentials &nbsp; ⑤ go overboard &nbsp; ⑥ stick to</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- FOR WHOM -->
 <section class="for-whom">
   <div class="for-whom-header reveal">
@@ -746,6 +953,34 @@
   </div>
 </section>
 
+<!-- REVIEWS -->
+<section style="padding: 80px 24px; background: var(--cream);">
+  <div style="max-width: 860px; margin: 0 auto;">
+    <div class="reveal" style="text-align:center; margin-bottom: 48px;">
+      <span class="section-label">수강생 후기</span>
+      <h2 style="font-family:'Noto Serif KR',serif; font-size:clamp(24px,4vw,36px); font-weight:600; line-height:1.5;">직접 경험한<br>수강생 이야기</h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div class="reveal" style="background:var(--warm-white); border:1px solid var(--divider); border-radius:16px; padding:28px;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:2px; color:var(--accent-dark); margin-bottom:8px; text-transform:uppercase;">영릴다</div>
+        <p style="font-size:15px; color:var(--charcoal); line-height:1.85; margin-bottom:16px;">영릴다 우연히 릴스에서 보구 신청해서 무료로 진행했는데 표현들이 매우 좋았어요! 저는 영릴다만 참여하긴 했는데 영왜잘 표현들을 볼 수 있었는데, 아이들과 해외살이하시는 분들에게는 정말 필요한 표현들이었어요! 특히 구어체 부분은 비영어권에 살던 분들이 영어권에 살때 구사하기 힘든 문장들이라고 생각드는데, 그런 문장들을 연습해 볼 수 있어서 즐거웠습니다. 3주 동안 좋은 영어표현 알려주시고, 집에서 열심히 연습해보면서 즐거웠습니다^^</p>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent-dark)); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:#fff; flex-shrink:0;">헤</div>
+          <span style="font-size:13px; font-weight:700; color:var(--mid);">헤레나k님</span>
+        </div>
+      </div>
+      <div class="reveal" style="background:var(--warm-white); border:1px solid var(--divider); border-radius:16px; padding:28px;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:2px; color:var(--accent-dark); margin-bottom:8px; text-transform:uppercase;">영왜잘</div>
+        <p style="font-size:15px; color:var(--charcoal); line-height:1.85; margin-bottom:16px;">실생활에서 바로 쓸 수 있는 영어표현을 배울 수 있어서 좋았습니다. 필수 문장 배우고 대화문에서 쓰는 법도 배우니까 복습 & 활용이 되었습니다. 20번 읽기 스터디를 하니 말하기에 너무 도움 되었어요. 호주에서 살고 있는데 계속 공부하고 싶어요.</p>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,var(--green),#2d6b45); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:#fff; flex-shrink:0;">라</div>
+          <span style="font-size:13px; font-weight:700; color:var(--mid);">라이언님</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="pricing-inner">
@@ -755,7 +990,6 @@
     </div>
 
     <div class="pricing-grid">
-      <!-- PDF Plan -->
       <div class="price-card reveal">
         <p class="price-plan">PDF Plan</p>
         <h3 class="price-name">영왜잘 + 영릴다<br>전체 PDF + 카페스터디</h3>
@@ -767,10 +1001,9 @@
           <li>영릴다 전체 PDF</li>
           <li>카페스터디 참여권</li>
         </ul>
-        <button class="btn-price btn-price-outline">구매 문의하기</button>
+        <a href="https://open.kakao.com/o/sGq4Mmhi" target="_blank" class="btn-price btn-price-outline">구매 문의하기</a>
       </div>
 
-      <!-- Speaking Plan -->
       <div class="price-card featured reveal">
         <div class="price-badge">🏆 추천 플랜</div>
         <p class="price-plan">영어 스피킹 늘리는 실속 패키지</p>
@@ -788,7 +1021,7 @@
         <div class="price-highlight">
           🎁 PDF 정가 ₩40,000 무료 제공
         </div>
-        <button class="btn-price btn-price-filled">구매 문의하기</button>
+        <a href="https://open.kakao.com/o/sGq4Mmhi" target="_blank" class="btn-price btn-price-filled">구매 문의하기</a>
       </div>
     </div>
   </div>
@@ -801,7 +1034,17 @@
 </footer>
 
 <script>
-  // Reveal on scroll
+  function showTab(name) {
+    document.getElementById('preview-younglilda').style.display = name === 'younglilda' ? 'block' : 'none';
+    document.getElementById('preview-youngrilda').style.display = name === 'youngrilda' ? 'block' : 'none';
+    document.getElementById('btn-younglilda').style.background = name === 'younglilda' ? '#1c1c1c' : 'transparent';
+    document.getElementById('btn-younglilda').style.color = name === 'younglilda' ? '#fff' : '#888';
+    document.getElementById('btn-younglilda').style.border = name === 'younglilda' ? 'none' : '1.5px solid #ccc';
+    document.getElementById('btn-youngrilda').style.background = name === 'youngrilda' ? '#1c1c1c' : 'transparent';
+    document.getElementById('btn-youngrilda').style.color = name === 'youngrilda' ? '#fff' : '#888';
+    document.getElementById('btn-youngrilda').style.border = name === 'youngrilda' ? 'none' : '1.5px solid #ccc';
+  }
+
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
