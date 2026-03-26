@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>발음 코치 · 슈퍼잉글리쉬</title>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2D6B;
+    --sky: #2B8CC4;
+    --gold: #FDF5E0;
+    --gold-border: #E8C87A;
+    --white: #fff;
+    --black: #1a1a1a;
+    --gray: #666;
+    --light: #f8f9fa;
+    --green: #2E7D32;
+    --green-bg: #E8F5E9;
+    --orange: #E65100;
+    --orange-bg: #FFF3E0;
+    --red: #C62828;
+    --red-bg: #FFEBEE;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--light); color: var(--black); min-height: 100vh; }
+
+  .nav { background: var(--navy); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-size: 16px; font-weight: 900; color: white; }
+  .nav-logo span { color: var(--sky); }
+  .nav-badge { background: var(--sky); color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+
+  .main { padding: 24px 20px 48px; max-width: 480px; margin: 0 auto; }
+
+  .header { margin-bottom: 24px; }
+  .header h1 { font-size: 26px; font-weight: 700; color: var(--navy); line-height: 1.35; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .header h1 span { color: var(--sky); }
+  .header p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+  .tabs { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { white-space: nowrap; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1.5px solid #e0e0e0; background: white; color: var(--gray); cursor: pointer; }
+  .tab.active { background: var(--navy); color: white; border-color: var(--navy); }
+
+  .sentence-card { background: var(--white); border-radius: 16px; padding: 22px; border: 1px solid #e0e0e0; margin-bottom: 16px; }
+  .sentence-label { font-size: 11px; font-weight: 700; color: var(--sky); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .sentence-text { font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1.5; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .sentence-ko { font-size: 13px; color: var(--gray); line-height: 1.6; }
+  .sentence-nav { display: flex; gap: 8px; margin-top: 14px; }
+  .sentence-btn { flex: 1; padding: 8px; border: 1.5px solid #e0e0e0; border-radius: 8px; background: white; font-size: 13px; font-weight: 600; color: var(--navy); cursor: pointer; }
+
+  .record-section { display: flex; flex-direction: column; align-items: center; margin: 24px 0; gap: 12px; }
+  .record-btn { width: 80px; height: 80px; border-radius: 50%; border: none; background: var(--sky); color: white; font-size: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; box-shadow: 0 4px 16px rgba(43,140,196,0.3); }
+  .record-btn.recording { background: #C62828; animation: pulse 1s infinite; box-shadow: 0 4px 16px rgba(198,40,40,0.4); }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+  .record-label { font-size: 13px; font-weight: 600; color: var(--gray); }
+  .record-label.recording { color: #C62828; }
+
+  .transcript-box { background: var(--gold); border: 1.5px solid var(--gold-border); border-radius: 12px; padding: 16px; margin-bottom: 16px; display: none; }
+  .transcript-box.show { display: block; }
+  .transcript-label { font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .transcript-text { font-size: 16px; font-weight: 600; color: var(--black); line-height: 1.5; }
+
+  .analyze-btn { width: 100%; padding: 16px; background: var(--sky); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; margin-bottom: 20px; display: none; }
+  .analyze-btn.show { display: block; }
+  .analyze-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+  .loading { text-align: center; padding: 32px; display: none; }
+  .loading.show { display: block; }
+  .loading-spinner { width: 36px; height: 36px; border: 3px solid #e0e0e0; border-top-color: var(--sky); border-radius: 50%; margin: 0 auto 12px; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading p { font-size: 14px; color: var(--gray); }
+
+  .result-card { background: var(--white); border-radius: 16px; padding: 22px; border: 1px solid #e0e0e0; margin-bottom: 16px; display: none; }
+  .result-card.show { display: block; }
+
+  .score-section { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+  .score-circle { width: 72px; height: 72px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+  .score-num { font-size: 26px; font-weight: 900; line-height: 1; }
+  .score-sub { font-size: 10px; font-weight: 600; opacity: 0.8; margin-top: 2px; }
+  .score-high { background: var(--green-bg); color: var(--green); }
+  .score-mid { background: var(--orange-bg); color: var(--orange); }
+  .score-low { background: var(--red-bg); color: var(--red); }
+  .score-info h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .score-info p { font-size: 13px; color: var(--gray); line-height: 1.5; }
+
+  .feedback-section { margin-bottom: 16px; }
+  .feedback-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .feedback-item { border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; font-size: 14px; color: var(--black); line-height: 1.65; font-weight: 500; }
+  .feedback-item.good { background: var(--green-bg); border-left: 3px solid var(--green); }
+  .feedback-item.improve { background: var(--orange-bg); border-left: 3px solid var(--orange); }
+  .feedback-item.tip { background: #E3F2FD; border-left: 3px solid var(--sky); }
+
+  .ielts-box { background: var(--navy); border-radius: 12px; padding: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .ielts-label { font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 600; }
+  .ielts-score { font-size: 28px; font-weight: 900; color: var(--sky); }
+
+  .retry-btn { width: 100%; padding: 14px; background: white; color: var(--navy); border: 2px solid var(--navy); border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+
+  .no-support { background: #FFEBEE; border: 1.5px solid #EF9A9A; border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; font-size: 13px; color: var(--red); line-height: 1.6; display: none; }
+  .no-support.show { display: block; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">슈퍼잉글리쉬<span> · </span>발음코치</div>
+  <div class="nav-badge">Beta</div>
+</nav>
+
+<div class="main">
+  <div class="header">
+    <h1>아이엘츠 <span>발음 교정</span><br>AI 코치</h1>
+    <p>문장을 읽고 녹음하면 AI가 발음을 분석해드려요.<br>아이엘츠 스피킹 기준으로 한국어 피드백을 드립니다.</p>
+  </div>
+
+  <div class="no-support" id="noSupport">
+    ⚠️ 이 브라우저는 음성 인식을 지원하지 않아요. Chrome 브라우저를 사용해주세요.
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-cat="basic" onclick="selectCategory('basic', this)">기초 발음</div>
+    <div class="tab" data-cat="ielts" onclick="selectCategory('ielts', this)">아이엘츠 토픽</div>
+    <div class="tab" data-cat="fluency" onclick="selectCategory('fluency', this)">유창성</div>
+    <div class="tab" data-cat="intonation" onclick="selectCategory('intonation', this)">억양</div>
+  </div>
+
+  <div class="sentence-card">
+    <div class="sentence-label">연습 문장</div>
+    <div class="sentence-text" id="sentenceText"></div>
+    <div class="sentence-ko" id="sentenceKo"></div>
+    <div class="sentence-nav">
+      <button class="sentence-btn" onclick="prevSentence()">← 이전</button>
+      <button class="sentence-btn" onclick="nextSentence()">다음 →</button>
+    </div>
+  </div>
+
+  <div class="record-section">
+    <button class="record-btn" id="recordBtn" onclick="toggleRecording()">🎤</button>
+    <span class="record-label" id="recordLabel">탭해서 녹음 시작</span>
+  </div>
+
+  <div class="transcript-box" id="transcriptBox">
+    <div class="transcript-label">내가 말한 내용</div>
+    <div class="transcript-text" id="transcriptText"></div>
+  </div>
+
+  <button class="analyze-btn show" id="analyzeBtn" onclick="analyzePronunciation()">
+    🔍 발음 분석하기
+  </button>
+
+  <div class="loading" id="loading">
+    <div class="loading-spinner"></div>
+    <p>AI가 발음을 분석 중입니다...</p>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div class="score-section">
+      <div class="score-circle" id="scoreCircle">
+        <div class="score-num" id="scoreNum">-</div>
+        <div class="score-sub">/ 100</div>
+      </div>
+      <div class="score-info">
+        <h3 id="scoreTitle">분석 중...</h3>
+        <p id="scoreDesc"></p>
+      </div>
+    </div>
+    <div class="feedback-section">
+      <div class="feedback-title">✅ 잘한 점</div>
+      <div id="goodFeedback"></div>
+    </div>
+    <div class="feedback-section">
+      <div class="feedback-title">🔧 개선할 점</div>
+      <div id="improveFeedback"></div>
+    </div>
+    <div class="feedback-section">
+      <div class="feedback-title">💡 연습 팁</div>
+      <div id="tipFeedback"></div>
+    </div>
+    <div class="ielts-box">
+      <div>
+        <div class="ielts-label">예상 IELTS Speaking 점수</div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px;">이 발음 수준 기준</div>
+      </div>
+      <div class="ielts-score" id="ieltsScore">-</div>
+    </div>
+    <button class="retry-btn" onclick="retry()">🔄 다시 연습하기</button>
+  </div>
+</div>
+
+<script>
+const sentences = {
+  basic: [
+    { en: "The weather has been quite pleasant recently.", ko: "날씨가 최근에 꽤 좋았어요." },
+    { en: "I think it's really important to practice every day.", ko: "매일 연습하는 것이 정말 중요하다고 생각해요." },
+    { en: "Could you please repeat that more slowly?", ko: "좀 더 천천히 다시 말씀해 주시겠어요?" },
+    { en: "I thoroughly enjoy reading books in my free time.", ko: "저는 여가 시간에 독서를 정말 즐겨요." },
+    { en: "The environment is one of the most pressing issues today.", ko: "환경은 오늘날 가장 시급한 문제 중 하나예요." },
+  ],
+  ielts: [
+    { en: "In my opinion, technology has both advantages and disadvantages.", ko: "제 생각에 기술에는 장점과 단점이 모두 있어요." },
+    { en: "I would like to describe my hometown as a vibrant and diverse city.", ko: "제 고향을 활기차고 다양한 도시라고 표현하고 싶어요." },
+    { en: "The government should invest more in renewable energy sources.", ko: "정부는 재생 가능 에너지 자원에 더 많이 투자해야 해요." },
+    { en: "Social media has significantly changed the way people communicate.", ko: "소셜 미디어는 사람들의 소통 방식을 크게 바꿔놓았어요." },
+    { en: "I strongly believe that education is the key to success.", ko: "저는 교육이 성공의 열쇠라고 강하게 믿어요." },
+  ],
+  fluency: [
+    { en: "Well, to be honest, I haven't really thought about that before.", ko: "음, 솔직히 말하면, 그것에 대해 전에 생각해본 적이 없어요." },
+    { en: "That's a really interesting question. Let me think about it for a moment.", ko: "정말 흥미로운 질문이에요. 잠깐 생각해볼게요." },
+    { en: "As far as I know, the situation has been improving gradually.", ko: "제가 아는 한, 상황이 점차 개선되고 있어요." },
+    { en: "To put it simply, I prefer working in a team rather than alone.", ko: "간단히 말하면, 저는 혼자보다 팀으로 일하는 것을 선호해요." },
+  ],
+  intonation: [
+    { en: "Really? That's absolutely incredible!", ko: "정말요? 그건 정말 믿을 수 없을 정도예요!" },
+    { en: "I'm not sure whether that's the right approach or not.", ko: "그게 올바른 접근인지 아닌지 잘 모르겠어요." },
+    { en: "On one hand it saves time, but on the other hand it costs more.", ko: "한편으로는 시간을 절약하지만, 다른 한편으로는 비용이 더 들어요." },
+    { en: "Could you tell me more about your experience?", ko: "당신의 경험에 대해 더 말씀해 주시겠어요?" },
+  ],
+};
+
+let currentCategory = 'basic';
+let currentIndex = 0;
+let isRecording = false;
+let recognition = null;
+let finalTranscript = '';
+
+const hasSpeech = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+if (!hasSpeech) document.getElementById('noSupport').classList.add('show');
+
+function updateSentence() {
+  const s = sentences[currentCategory][currentIndex];
+  document.getElementById('sentenceText').textContent = s.en;
+  document.getElementById('sentenceKo').textContent = s.ko;
+}
+
+function selectCategory(cat, el) {
+  currentCategory = cat;
+  currentIndex = 0;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  updateSentence();
+  resetAll();
+}
+
+function prevSentence() {
+  currentIndex = (currentIndex - 1 + sentences[currentCategory].length) % sentences[currentCategory].length;
+  updateSentence(); resetAll();
+}
+
+function nextSentence() {
+  currentIndex = (currentIndex + 1) % sentences[currentCategory].length;
+  updateSentence(); resetAll();
+}
+
+function resetAll() {
+  finalTranscript = '';
+  document.getElementById('transcriptBox').classList.remove('show');
+  document.getElementById('resultCard').classList.remove('show');
+  document.getElementById('loading').classList.remove('show');
+}
+
+function toggleRecording() {
+  isRecording ? stopRecording() : startRecording();
+}
+
+function startRecording() {
+  if (!hasSpeech) { alert('Chrome 브라우저를 사용해주세요.'); return; }
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SR();
+  recognition.lang = 'en-US';
+  recognition.continuous = false;
+  recognition.interimResults = true;
+
+  recognition.onstart = () => {
+    isRecording = true;
+    document.getElementById('recordBtn').classList.add('recording');
+    document.getElementById('recordBtn').textContent = '⏹';
+    document.getElementById('recordLabel').textContent = '녹음 중... 탭해서 정지';
+    document.getElementById('recordLabel').classList.add('recording');
+    resetAll();
+  };
+
+  recognition.onresult = (e) => {
+    finalTranscript = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      if (e.results[i].isFinal) finalTranscript += e.results[i][0].transcript;
+    }
+    if (finalTranscript) {
+      document.getElementById('transcriptText').textContent = finalTranscript;
+      document.getElementById('transcriptBox').classList.add('show');
+    }
+  };
+
+  recognition.onerror = (e) => { stopRecording(); };
+  recognition.onend = () => { stopRecording(); };
+  recognition.start();
+}
+
+function stopRecording() {
+  isRecording = false;
+  if (recognition) recognition.stop();
+  document.getElementById('recordBtn').classList.remove('recording');
+  document.getElementById('recordBtn').textContent = '🎤';
+  document.getElementById('recordLabel').textContent = '탭해서 녹음 시작';
+  document.getElementById('recordLabel').classList.remove('recording');
+}
+
+async function analyzePronunciation() {
+  const target = sentences[currentCategory][currentIndex].en;
+  const spoken = finalTranscript || '(녹음 없음 — 데모 모드)';
+
+  document.getElementById('analyzeBtn').disabled = true;
+  document.getElementById('loading').classList.add('show');
+  document.getElementById('resultCard').classList.remove('show');
+
+  const prompt = `당신은 아이엘츠 스피킹 전문 발음 코치입니다. 한국인 영어 학습자의 발음을 분석해주세요.
+
+목표 문장: "${target}"
+학습자가 말한 내용 (STT 결과): "${spoken}"
+
+JSON 형식으로만 응답하세요:
+{
+  "score": 75,
+  "scoreTitle": "양호한 발음",
+  "scoreDesc": "전반적으로 의사소통이 가능한 수준이에요.",
+  "ieltsScore": "6.0",
+  "good": ["잘한 점 1", "잘한 점 2"],
+  "improve": ["개선할 점 1 (구체적인 발음 교정법 포함)", "개선할 점 2"],
+  "tip": ["연습 팁 1", "연습 팁 2"]
+}
+
+평가 기준:
+- score(0-100): STT 정확도, 발음 명확도, 자연스러움 종합
+- ieltsScore: 5.0~9.0 (이 발음 수준 기준 예상)
+- good: 잘한 점 1-2개 (한국어, 구체적으로)
+- improve: 개선할 점 1-3개 (한국어, 혀/입 위치 등 구체적 교정법)
+- tip: 연습 팁 1-2개 (한국어)`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await res.json();
+    const text = data.content[0].text;
+    const json = JSON.parse(text.replace(/```json|```/g, '').trim());
+    showResult(json);
+  } catch (err) {
+    alert('분석 중 오류가 발생했어요: ' + err.message);
+  } finally {
+    document.getElementById('loading').classList.remove('show');
+    document.getElementById('analyzeBtn').disabled = false;
+  }
+}
+
+function showResult(data) {
+  const score = data.score;
+  const circle = document.getElementById('scoreCircle');
+  circle.className = 'score-circle ' + (score >= 75 ? 'score-high' : score >= 50 ? 'score-mid' : 'score-low');
+  document.getElementById('scoreNum').textContent = score;
+  document.getElementById('scoreTitle').textContent = data.scoreTitle;
+  document.getElementById('scoreDesc').textContent = data.scoreDesc;
+  document.getElementById('ieltsScore').textContent = data.ieltsScore;
+  document.getElementById('goodFeedback').innerHTML = data.good.map(g => `<div class="feedback-item good">${g}</div>`).join('');
+  document.getElementById('improveFeedback').innerHTML = data.improve.map(i => `<div class="feedback-item improve">${i}</div>`).join('');
+  document.getElementById('tipFeedback').innerHTML = data.tip.map(t => `<div class="feedback-item tip">${t}</div>`).join('');
+  document.getElementById('resultCard').classList.add('show');
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth' });
+}
+
+function retry() {
+  resetAll();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 초기 문장 로드
+updateSentence();
+</script>
+</body>
+</html>
