@@ -99,6 +99,11 @@
 
   .no-support { background: #FFEBEE; border: 1.5px solid #EF9A9A; border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; font-size: 13px; color: var(--red); line-height: 1.6; display: none; }
   .no-support.show { display: block; }
+  .api-box { background: var(--gold); border: 1.5px solid var(--gold-border); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; }
+  .api-box label { font-size: 12px; font-weight: 700; color: var(--navy); display: block; margin-bottom: 6px; }
+  .api-box input { width: 100%; padding: 10px 12px; border: 1.5px solid #e0e0e0; border-radius: 8px; font-size: 13px; font-family: monospace; outline: none; }
+  .api-box input:focus { border-color: var(--sky); }
+  .api-box p { font-size: 11px; color: var(--gray); margin-top: 6px; line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -116,6 +121,12 @@
 
   <div class="no-support" id="noSupport">
     ⚠️ 이 브라우저는 음성 인식을 지원하지 않아요. Chrome 브라우저를 사용해주세요.
+  </div>
+
+  <div class="api-box">
+    <label>🔑 Claude API 키</label>
+    <input type="password" id="apiKey" placeholder="sk-ant-api..." />
+    <p>Anthropic API 키를 입력하세요. 키는 이 페이지에서만 사용되며 저장되지 않아요.</p>
   </div>
 
   <div class="tabs">
@@ -336,11 +347,21 @@ JSON 형식으로만 응답하세요:
 - improve: 개선할 점 1-3개 (한국어, 혀/입 위치 등 구체적 교정법)
 - tip: 연습 팁 1-2개 (한국어)`;
 
+  const apiKey = document.getElementById('apiKey').value.trim();
+  if (!apiKey) {
+    alert('API 키를 입력해주세요!');
+    document.getElementById('loading').classList.remove('show');
+    document.getElementById('analyzeBtn').disabled = false;
+    return;
+  }
+
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
         'anthropic-dangerous-direct-browser-access': 'true'
       },
       body: JSON.stringify({
@@ -351,6 +372,10 @@ JSON 형식으로만 응답하세요:
     });
 
     const data = await res.json();
+    if (data.error) {
+      alert('API 오류: ' + data.error.message);
+      return;
+    }
     const text = data.content[0].text;
     const json = JSON.parse(text.replace(/```json|```/g, '').trim());
     showResult(json);
