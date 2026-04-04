@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS 핵심 단어장</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f5;color:#1a1a1a;-webkit-text-size-adjust:100%}
+.top{background:#fff;padding:14px 16px;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:10;display:flex;flex-direction:column;gap:10px}
+.top-row{display:flex;align-items:center;gap:8px}
+.title{font-size:17px;font-weight:600;flex:1}
+.cnt{font-size:12px;color:#888;background:#f0f0f0;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.search-wrap input{width:100%;padding:10px 14px;font-size:15px;border:1px solid #ddd;border-radius:10px;background:#fafafa;color:#1a1a1a;outline:none}
+.search-wrap input:focus{border-color:#4a90e2;background:#fff}
+.cats{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cat-btn{font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid #ddd;background:#fff;color:#666;cursor:pointer;white-space:nowrap;min-height:34px;display:flex;align-items:center;gap:4px}
+.cat-btn.active{background:#4a90e2;color:#fff;border-color:#4a90e2;font-weight:600}
+.cat-btn .badge{font-size:11px;padding:1px 5px;border-radius:999px;background:rgba(0,0,0,0.1)}
+.cat-btn.active .badge{background:rgba(255,255,255,0.3)}
+.list{padding:12px 16px;display:flex;flex-direction:column;gap:8px;max-width:720px;margin:0 auto;width:100%}
+.card{background:#fff;border:1px solid #e8e8e8;border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color 0.15s,box-shadow 0.15s}
+.card:hover{border-color:#bbb;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.card.open{border-color:#4a90e2}
+.card.highlight{border-color:#34c759;background:#f0fff4}
+.card-top{display:flex;align-items:center;gap:10px}
+.word{font-size:17px;font-weight:600;color:#1a1a1a}
+.meaning{font-size:14px;color:#666;flex:1}
+.arrow{font-size:13px;color:#bbb;transition:transform 0.2s;margin-left:auto}
+.card.open .arrow{transform:rotate(180deg)}
+.detail{margin-top:12px;padding-top:12px;border-top:1px solid #f0f0f0;display:flex;flex-direction:column;gap:10px}
+.syn-row{display:flex;flex-wrap:wrap;gap:6px}
+.syn{font-size:12px;padding:4px 10px;border-radius:999px;background:#f0f0f0;color:#555;border:1px solid #e0e0e0;cursor:default}
+.syn.linked{color:#4a90e2;border-color:#b3d4f5;background:#eef5ff;cursor:pointer;font-weight:600}
+.syn.linked:active{background:#d0e8ff}
+.ex-en{font-size:13px;color:#333;line-height:1.65;border-left:3px solid #4a90e2;padding-left:10px}
+.ex-kr{font-size:12px;color:#888;line-height:1.65;padding-left:13px;font-style:italic}
+.empty{padding:3rem 1rem;text-align:center;font-size:14px;color:#999}
+.footer{text-align:center;padding:2rem 1rem;font-size:12px;color:#bbb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-row">
+    <span class="title">IELTS 핵심 단어장</span>
+    <span class="cnt" id="cnt">157개</span>
+  </div>
+  <div class="search-wrap">
+    <input type="text" placeholder="단어 또는 뜻 검색..." id="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+  </div>
+  <div class="cats" id="cats"></div>
+</div>
+<div class="list" id="list"></div>
+<div class="footer">IELTS Reading 핵심 단어장 · 157개</div>
+
+<script>
+const data=[
+  {w:"assume",m:"가정하다",s:["perceive","suggest","propose"],e:"Researchers assume that the climate will continue to change.",k:"연구자들은 기후가 계속 변할 것이라고 가정한다."},
+  {w:"perceive",m:"인식하다",s:["identify","indicate"],e:"People perceive risk differently depending on their experience.",k:"사람들은 경험에 따라 위험을 다르게 인식한다."},
+  {w:"interpret",m:"해석하다",s:["analyse","examine","distinguish"],e:"Scientists interpret data from satellite images.",k:"과학자들은 위성 이미지의 데이터를 해석한다."},
+  {w:"identify",m:"식별하다",s:["distinguish","examine","indicate"],e:"The study identifies three key factors.",k:"이 연구는 세 가지 핵심 요소를 식별한다."},
+  {w:"suggest",m:"시사하다",s:["indicate","imply","propose"],e:"The evidence suggests a link between diet and health.",k:"증거는 식단과 건강 사이의 연관성을 시사한다."},
+  {w:"indicate",m:"나타내다",s:["suggest","demonstrate","reflect"],e:"The graph indicates a steady rise in temperature.",k:"그래프는 기온의 꾸준한 상승을 나타낸다."},
+  {w:"imply",m:"암시하다",s:["suggest","indicate","propose"],e:"The author implies that the policy failed.",k:"저자는 그 정책이 실패했음을 암시한다."},
+  {w:"conclude",m:"결론내리다",s:["determine","demonstrate","acknowledge"],e:"The researchers concluded that exercise reduces stress.",k:"연구자들은 운동이 스트레스를 줄인다고 결론 내렸다."},
+  {w:"examine",m:"검토하다",s:["analyse","evaluate","identify"],e:"The report examines the effects of urbanisation.",k:"보고서는 도시화의 영향을 검토한다."},
+  {w:"evaluate",m:"평가하다",s:["examine","analyse","determine"],e:"Experts evaluate the impact of new technologies.",k:"전문가들은 새로운 기술의 영향을 평가한다."},
+  {w:"consider",m:"고려하다",s:["evaluate","acknowledge","reflect"],e:"We must consider the long-term consequences.",k:"우리는 장기적인 결과를 고려해야 한다."},
+  {w:"propose",m:"제안하다",s:["suggest","indicate","establish"],e:"The scientist proposed a new theory of evolution.",k:"그 과학자는 새로운 진화론을 제안했다."},
+  {w:"distinguish",m:"구별하다",s:["identify","interpret","contrast with"],e:"It is important to distinguish fact from opinion.",k:"사실과 의견을 구별하는 것이 중요하다."},
+  {w:"demonstrate",m:"증명하다",s:["indicate","reflect","establish"],e:"The experiment demonstrates the effect of gravity.",k:"실험은 중력의 효과를 증명한다."},
+  {w:"acknowledge",m:"인정하다",s:["identify","consider","conclude"],e:"The government acknowledged the failure of the policy.",k:"정부는 정책의 실패를 인정했다."},
+  {w:"increase",m:"증가하다",s:["expand","emerge","accelerate"],e:"The population has increased significantly over 50 years.",k:"인구는 50년에 걸쳐 크게 증가했다."},
+  {w:"decrease",m:"감소하다",s:["decline","reduce","shift"],e:"Carbon emissions decreased after the new law.",k:"새 법 시행 후 탄소 배출량이 감소했다."},
+  {w:"improve",m:"향상되다",s:["develop","expand","reform"],e:"Living standards improved throughout the 20th century.",k:"생활 수준은 20세기 내내 향상되었다."},
+  {w:"reduce",m:"줄이다",s:["decrease","decline","modify"],e:"The aim is to reduce plastic waste in oceans.",k:"목표는 바다의 플라스틱 쓰레기를 줄이는 것이다."},
+  {w:"develop",m:"발전하다",s:["evolve","expand","improve"],e:"Countries develop economically through trade.",k:"국가들은 무역을 통해 경제적으로 발전한다."},
+  {w:"evolve",m:"진화하다",s:["develop","transform","shift"],e:"Languages evolve over hundreds of years.",k:"언어는 수백 년에 걸쳐 진화한다."},
+  {w:"transform",m:"변화시키다",s:["evolve","modify","shift"],e:"Technology has transformed the way we communicate.",k:"기술은 우리가 소통하는 방식을 변화시켰다."},
+  {w:"emerge",m:"나타나다",s:["develop","expand","shift"],e:"New problems emerge as the climate changes.",k:"기후가 변함에 따라 새로운 문제들이 나타난다."},
+  {w:"accelerate",m:"가속화하다",s:["increase","expand","develop"],e:"Globalisation has accelerated economic growth.",k:"세계화는 경제 성장을 가속화했다."},
+  {w:"fluctuate",m:"변동하다",s:["shift","decline"],e:"Oil prices fluctuate due to global demand.",k:"유가는 세계적 수요로 인해 변동한다."},
+  {w:"stabilise",m:"안정되다",s:["maintain","establish","overcome"],e:"The economy stabilised after years of recession.",k:"경제는 수년간의 침체 후 안정되었다."},
+  {w:"shift",m:"이동하다/바뀌다",s:["evolve","transform","modify"],e:"There has been a shift towards renewable energy.",k:"재생 에너지를 향한 변화가 있었다."},
+  {w:"modify",m:"수정하다",s:["transform","shift","reform"],e:"Scientists modify genes to study diseases.",k:"과학자들은 질병을 연구하기 위해 유전자를 수정한다."},
+  {w:"expand",m:"확장되다",s:["increase","develop","emerge"],e:"The company plans to expand into new markets.",k:"회사는 새로운 시장으로 확장할 계획이다."},
+  {w:"decline",m:"감소/쇠퇴하다",s:["decrease","reduce","fluctuate"],e:"Bird populations have declined in urban areas.",k:"도시 지역에서 조류 개체 수가 감소했다."},
+  {w:"attack",m:"공격하다",s:["invade","pursue","destroy"],e:"The army attacked the fortress at dawn.",k:"군대는 새벽에 요새를 공격했다."},
+  {w:"invade",m:"침략하다",s:["attack","capture","establish"],e:"Roman armies invaded Britain in 43 AD.",k:"로마 군대는 서기 43년에 브리튼을 침략했다."},
+  {w:"capture",m:"잡다/점령하다",s:["obtain","invade","pursue"],e:"The soldiers captured the enemy's base.",k:"군인들은 적의 기지를 점령했다."},
+  {w:"pursue",m:"추적하다",s:["capture","conduct","obtain"],e:"The police pursued the suspect for miles.",k:"경찰은 수 마일에 걸쳐 용의자를 추적했다."},
+  {w:"prevent",m:"막다",s:["protect","maintain","overcome"],e:"Vaccination prevents the spread of disease.",k:"예방접종은 질병의 확산을 막는다."},
+  {w:"protect",m:"보호하다",s:["prevent","maintain","conservation"],e:"Laws protect endangered species from hunting.",k:"법은 멸종 위기 종을 사냥으로부터 보호한다."},
+  {w:"destroy",m:"파괴하다",s:["attack","abandon","release"],e:"The earthquake destroyed hundreds of buildings.",k:"지진은 수백 채의 건물을 파괴했다."},
+  {w:"abandon",m:"버리다",s:["release","decline","shift"],e:"The crew abandoned the sinking ship.",k:"선원들은 침몰하는 배를 버렸다."},
+  {w:"establish",m:"설립하다",s:["develop","implement","propose"],e:"The colony was established in the 17th century.",k:"그 식민지는 17세기에 설립되었다."},
+  {w:"adopt",m:"채택하다",s:["implement","establish","reform"],e:"Many countries have adopted renewable energy policies.",k:"많은 국가들이 재생 에너지 정책을 채택했다."},
+  {w:"implement",m:"시행하다",s:["adopt","conduct","establish"],e:"The government implemented strict environmental laws.",k:"정부는 엄격한 환경법을 시행했다."},
+  {w:"maintain",m:"유지하다",s:["stabilise","protect","sustainable"],e:"It is essential to maintain clean water supplies.",k:"깨끗한 수원을 유지하는 것이 필수적이다."},
+  {w:"release",m:"방출하다",s:["generate","emission","destroy"],e:"Factories release harmful gases into the atmosphere.",k:"공장은 대기 중으로 유해 가스를 방출한다."},
+  {w:"obtain",m:"얻다",s:["capture","conduct","generate"],e:"The team obtained funding for further research.",k:"팀은 추가 연구를 위한 자금을 얻었다."},
+  {w:"conduct",m:"수행하다",s:["implement","pursue","analyse"],e:"Scientists conducted experiments over two years.",k:"과학자들은 2년에 걸쳐 실험을 수행했다."},
+  {w:"civilisation",m:"문명",s:["settlement","heritage","empire"],e:"Ancient civilisations built impressive structures.",k:"고대 문명은 인상적인 건축물을 세웠다."},
+  {w:"empire",m:"제국",s:["territory","military","civilisation"],e:"The Roman Empire influenced modern European culture.",k:"로마 제국은 현대 유럽 문화에 영향을 미쳤다."},
+  {w:"military",m:"군대/군사의",s:["authority","empire","territory"],e:"Military technology advanced rapidly during wartime.",k:"전시에 군사 기술이 빠르게 발전했다."},
+  {w:"territory",m:"영토",s:["empire","settlement","heritage"],e:"The empire controlled vast territories in Asia.",k:"제국은 아시아의 광대한 영토를 지배했다."},
+  {w:"trade",m:"무역",s:["economy","supply","demand"],e:"Silk Road trade connected Asia and Europe.",k:"실크로드 무역은 아시아와 유럽을 연결했다."},
+  {w:"colonise",m:"식민지화하다",s:["invade","establish","settlement"],e:"European nations colonised large parts of Africa.",k:"유럽 국가들은 아프리카의 많은 지역을 식민지화했다."},
+  {w:"migration",m:"이주",s:["settlement","shift","emerge"],e:"Climate change is driving migration in coastal regions.",k:"기후 변화가 해안 지역의 이주를 촉진하고 있다."},
+  {w:"settlement",m:"정착지",s:["civilisation","territory","heritage"],e:"Early settlements were built near rivers.",k:"초기 정착지는 강 근처에 세워졌다."},
+  {w:"revolt",m:"반란",s:["reform","authority","policy"],e:"A revolt against the ruler ended the dynasty.",k:"통치자에 대한 반란이 왕조를 끝냈다."},
+  {w:"heritage",m:"유산",s:["civilisation","settlement","conservation"],e:"The site is part of the world's cultural heritage.",k:"그 유적지는 세계 문화유산의 일부이다."},
+  {w:"authority",m:"권위/당국",s:["policy","democracy","military"],e:"Local authorities introduced new waste regulations.",k:"지방 당국은 새로운 폐기물 규정을 도입했다."},
+  {w:"inequality",m:"불평등",s:["poverty","reform","policy"],e:"Income inequality has widened in many nations.",k:"많은 국가에서 소득 불평등이 심화되었다."},
+  {w:"policy",m:"정책",s:["reform","authority","implement"],e:"Environmental policy must balance growth and conservation.",k:"환경 정책은 성장과 보전의 균형을 맞춰야 한다."},
+  {w:"reform",m:"개혁",s:["policy","modify","transform"],e:"Educational reform improved literacy rates.",k:"교육 개혁은 문해율을 향상시켰다."},
+  {w:"democracy",m:"민주주의",s:["authority","policy","reform"],e:"Democracy relies on free and fair elections.",k:"민주주의는 자유롭고 공정한 선거에 의존한다."},
+  {w:"cause",m:"원인/야기하다",s:["trigger","generate","lead to"],e:"Deforestation causes soil erosion.",k:"삼림 벌채는 토양 침식을 야기한다."},
+  {w:"lead to",m:"~로 이어지다",s:["result in","cause","contribute to"],e:"Poor diet can lead to serious health problems.",k:"불량한 식단은 심각한 건강 문제로 이어질 수 있다."},
+  {w:"result in",m:"결과를 초래하다",s:["lead to","cause","generate"],e:"The drought resulted in widespread food shortages.",k:"가뭄은 광범위한 식량 부족을 초래했다."},
+  {w:"contribute to",m:"기여하다",s:["lead to","result in","affect"],e:"Exercise contributes to better mental health.",k:"운동은 더 나은 정신 건강에 기여한다."},
+  {w:"account for",m:"설명하다/차지하다",s:["reflect","indicate","determine"],e:"Tourism accounts for 10% of the country's income.",k:"관광은 그 나라 수입의 10%를 차지한다."},
+  {w:"trigger",m:"유발하다",s:["cause","generate","affect"],e:"Heavy rainfall triggered severe flooding.",k:"폭우가 심각한 홍수를 유발했다."},
+  {w:"influence",m:"영향을 미치다",s:["affect","determine","contribute to"],e:"Social media influences how people form opinions.",k:"소셜 미디어는 사람들이 의견을 형성하는 방식에 영향을 미친다."},
+  {w:"affect",m:"영향을 주다",s:["influence","trigger","determine"],e:"Climate change affects biodiversity worldwide.",k:"기후 변화는 전 세계 생물다양성에 영향을 준다."},
+  {w:"determine",m:"결정하다",s:["influence","evaluate","account for"],e:"Genetics partly determines a person's health.",k:"유전학은 부분적으로 개인의 건강을 결정한다."},
+  {w:"generate",m:"발생시키다",s:["cause","release","trigger"],e:"Wind turbines generate clean electricity.",k:"풍력 터빈은 청정 전기를 발생시킨다."},
+  {w:"overcome",m:"극복하다",s:["prevent","stabilise","reform"],e:"Scientists are working to overcome antibiotic resistance.",k:"과학자들은 항생제 내성을 극복하기 위해 연구 중이다."},
+  {w:"reflect",m:"반영하다",s:["indicate","demonstrate","account for"],e:"The data reflects a growing demand for housing.",k:"데이터는 주택에 대한 증가하는 수요를 반영한다."},
+  {w:"period",m:"기간",s:["era","century","ongoing"],e:"The Bronze Age was a key period in human history.",k:"청동기 시대는 인류 역사에서 중요한 기간이었다."},
+  {w:"era",m:"시대",s:["period","century","contemporary"],e:"The digital era has changed modern communication.",k:"디지털 시대는 현대 커뮤니케이션을 바꿔놓았다."},
+  {w:"century",m:"세기/100년",s:["period","era","millennium"],e:"Over the past century, life expectancy has doubled.",k:"지난 100년간 기대 수명이 두 배가 되었다."},
+  {w:"millennium",m:"천년",s:["century","era","period"],e:"The new millennium brought rapid technological change.",k:"새 천년은 급격한 기술 변화를 가져왔다."},
+  {w:"subsequently",m:"그 후에",s:["eventually","ongoing"],e:"The experiment was conducted and subsequently published.",k:"실험이 수행된 후 결과가 발표되었다."},
+  {w:"prior to",m:"~이전에",s:["ancient","era"],e:"Prior to industrialisation, most people worked in farming.",k:"산업화 이전에 대부분의 사람들은 농업에 종사했다."},
+  {w:"eventually",m:"결국",s:["subsequently","ongoing","overall"],e:"The species eventually adapted to its environment.",k:"그 종은 결국 환경에 적응했다."},
+  {w:"contemporary",m:"현대의/동시대의",s:["era","ongoing","widespread"],e:"Contemporary research focuses on gene editing.",k:"현대 연구는 유전자 편집에 초점을 맞추고 있다."},
+  {w:"ancient",m:"고대의",s:["prior to","civilisation","heritage"],e:"Ancient Romans built roads across Europe.",k:"고대 로마인들은 유럽 전역에 도로를 건설했다."},
+  {w:"ongoing",m:"계속 진행 중인",s:["contemporary","subsequently","widespread"],e:"There is an ongoing debate about climate policy.",k:"기후 정책에 관한 논쟁이 계속 진행 중이다."},
+  {w:"related to",m:"관련된",s:["associated with","correspond to","depend on"],e:"Stress is closely related to poor sleep quality.",k:"스트레스는 수면의 질 저하와 밀접하게 관련되어 있다."},
+  {w:"associated with",m:"연관된",s:["related to","correspond to","interact with"],e:"Smoking is associated with lung disease.",k:"흡연은 폐 질환과 연관되어 있다."},
+  {w:"depend on",m:"의존하다",s:["related to","interact with","contribute to"],e:"Farmers depend on seasonal rainfall for crops.",k:"농부들은 작물을 위해 계절적 강우에 의존한다."},
+  {w:"differ from",m:"다르다",s:["contrast with","distinguish","shift"],e:"The results differ from previous studies.",k:"결과는 이전 연구들과 다르다."},
+  {w:"similar to",m:"비슷하다",s:["related to","associated with","correspond to"],e:"This species is similar to others found in Africa.",k:"이 종은 아프리카에서 발견된 다른 종들과 비슷하다."},
+  {w:"interact with",m:"상호작용하다",s:["associated with","depend on","affect"],e:"Chemicals interact with each other in complex ways.",k:"화학 물질들은 복잡한 방식으로 서로 상호작용한다."},
+  {w:"contrast with",m:"대조를 이루다",s:["differ from","distinguish","whereas"],e:"Rural life contrasts with the pace of city living.",k:"농촌 생활은 도시 생활의 속도와 대조를 이룬다."},
+  {w:"correspond to",m:"일치하다",s:["related to","similar to","reflect"],e:"The findings correspond to earlier predictions.",k:"연구 결과는 이전 예측과 일치한다."},
+  {w:"research",m:"연구",s:["evidence","data","observation"],e:"Recent research shows benefits of a plant-based diet.",k:"최근 연구는 식물성 식단의 이점을 보여준다."},
+  {w:"evidence",m:"증거",s:["research","data","observation"],e:"There is strong evidence linking air pollution to asthma.",k:"대기 오염과 천식을 연결하는 강력한 증거가 있다."},
+  {w:"theory",m:"이론",s:["hypothesis","evidence","research"],e:"Darwin's theory of evolution changed biology.",k:"다윈의 진화론은 생물학을 바꾸었다."},
+  {w:"hypothesis",m:"가설",s:["theory","evidence","observation"],e:"The team tested their hypothesis with experiments.",k:"팀은 실험으로 가설을 검증했다."},
+  {w:"data",m:"데이터/자료",s:["evidence","research","observation"],e:"The data collected shows rising ocean temperatures.",k:"수집된 데이터는 해양 온도 상승을 보여준다."},
+  {w:"observation",m:"관찰",s:["evidence","data","research"],e:"Field observation revealed new animal behaviour.",k:"현장 관찰은 새로운 동물 행동을 밝혀냈다."},
+  {w:"significant",m:"중요한/유의미한",s:["considerable","crucial","fundamental"],e:"There was a significant drop in crime rates.",k:"범죄율이 크게 감소했다."},
+  {w:"accurate",m:"정확한",s:["significant","evidence","data"],e:"Scientists need accurate measurements for experiments.",k:"과학자들은 실험을 위해 정확한 측정이 필요하다."},
+  {w:"challenge",m:"도전/문제",s:["controversy","overcome","significant"],e:"Climate change presents a major challenge for governments.",k:"기후 변화는 정부에 큰 과제를 제시한다."},
+  {w:"technique",m:"기술/방법",s:["conduct","implement"],e:"New imaging techniques help doctors diagnose diseases.",k:"새로운 영상 기술은 의사들이 질병을 진단하는 데 도움을 준다."},
+  {w:"analyse",m:"분석하다",s:["examine","evaluate","interpret"],e:"Researchers analyse soil samples from the site.",k:"연구자들은 현장의 토양 샘플을 분석한다."},
+  {w:"controversy",m:"논쟁",s:["challenge","policy","reform"],e:"There is ongoing controversy about the safety of the drug.",k:"그 약의 안전성에 대한 논쟁이 계속되고 있다."},
+  {w:"habitat",m:"서식지",s:["ecosystem","species","resource"],e:"Deforestation destroys the natural habitat of wildlife.",k:"삼림 벌채는 야생 동물의 자연 서식지를 파괴한다."},
+  {w:"species",m:"종",s:["habitat","ecosystem","biodiversity"],e:"Many species are threatened by habitat loss.",k:"많은 종들이 서식지 손실로 위협받고 있다."},
+  {w:"ecosystem",m:"생태계",s:["habitat","biodiversity","species"],e:"Coral reefs are among the richest ecosystems on Earth.",k:"산호초는 지구에서 가장 풍부한 생태계 중 하나이다."},
+  {w:"biodiversity",m:"생물다양성",s:["ecosystem","species","conservation"],e:"Deforestation reduces biodiversity in tropical regions.",k:"삼림 벌채는 열대 지역의 생물다양성을 감소시킨다."},
+  {w:"conservation",m:"보존",s:["sustainable","heritage","protect"],e:"Conservation efforts have helped restore whale populations.",k:"보존 노력은 고래 개체 수 회복에 도움이 되었다."},
+  {w:"emission",m:"배출",s:["pollution","release","generate"],e:"Carbon emissions must be cut to slow global warming.",k:"지구 온난화를 늦추려면 탄소 배출을 줄여야 한다."},
+  {w:"sustainable",m:"지속 가능한",s:["conservation","resource","maintain"],e:"Sustainable farming reduces pressure on natural resources.",k:"지속 가능한 농업은 자연 자원에 대한 압박을 줄인다."},
+  {w:"resource",m:"자원",s:["sustainable","supply","habitat"],e:"Fresh water is a precious and limited resource.",k:"담수는 귀중하고 한정된 자원이다."},
+  {w:"pollution",m:"오염",s:["emission","affect","widespread"],e:"Air pollution causes millions of deaths annually.",k:"대기 오염은 매년 수백만 명의 사망을 야기한다."},
+  {w:"extinct",m:"멸종된",s:["decline","abandon","widespread"],e:"The dodo became extinct in the 17th century.",k:"도도새는 17세기에 멸종되었다."},
+  {w:"economy",m:"경제",s:["trade","investment","revenue"],e:"The global economy grew rapidly after World War II.",k:"세계 경제는 제2차 세계대전 후 빠르게 성장했다."},
+  {w:"investment",m:"투자",s:["economy","revenue","generate"],e:"Investment in education improves long-term growth.",k:"교육에 대한 투자는 장기적 성장을 향상시킨다."},
+  {w:"poverty",m:"빈곤",s:["inequality","employment","reform"],e:"Poverty rates have fallen in many developing nations.",k:"많은 개발도상국에서 빈곤율이 감소했다."},
+  {w:"employment",m:"고용",s:["poverty","demand","supply"],e:"Automation threatens employment in manufacturing.",k:"자동화는 제조업의 고용을 위협한다."},
+  {w:"consumption",m:"소비",s:["demand","supply","resource"],e:"Energy consumption has risen sharply this decade.",k:"이번 10년간 에너지 소비가 급격히 증가했다."},
+  {w:"revenue",m:"수입/수익",s:["economy","investment","trade"],e:"Tourism generates significant revenue for the country.",k:"관광은 그 나라에 상당한 수익을 창출한다."},
+  {w:"demand",m:"수요",s:["supply","consumption","trade"],e:"Demand for electric vehicles is growing worldwide.",k:"전기차에 대한 수요가 전 세계적으로 증가하고 있다."},
+  {w:"supply",m:"공급",s:["demand","resource","consumption"],e:"A shortage in supply caused food prices to rise.",k:"공급 부족이 식품 가격 상승을 야기했다."},
+  {w:"infrastructure",m:"기반시설",s:["economy","urbanisation","policy"],e:"Poor infrastructure limits economic development.",k:"열악한 기반시설은 경제 발전을 제한한다."},
+  {w:"urbanisation",m:"도시화",s:["migration","infrastructure","expand"],e:"Rapid urbanisation has increased demand for housing.",k:"급격한 도시화는 주택 수요를 증가시켰다."},
+  {w:"play a role",m:"역할을 하다",s:["contribute to","influence","affect"],e:"Diet plays a key role in preventing heart disease.",k:"식단은 심장병 예방에 핵심적인 역할을 한다."},
+  {w:"take place",m:"발생하다",s:["emerge","result in"],e:"The experiment took place over a six-month period.",k:"실험은 6개월에 걸쳐 진행되었다."},
+  {w:"be likely to",m:"~할 가능성이 있다",s:["indicate","suggest"],e:"Coastal cities are likely to flood as sea levels rise.",k:"해수면이 상승함에 따라 해안 도시들은 침수될 가능성이 있다."},
+  {w:"be responsible for",m:"~에 책임이 있다",s:["cause","account for","determine"],e:"Humans are largely responsible for climate change.",k:"인간은 기후 변화에 대한 책임이 크다."},
+  {w:"in terms of",m:"~측면에서",s:["account for","reflect","indicate"],e:"In terms of cost, solar energy is now competitive.",k:"비용 측면에서 태양 에너지는 이제 경쟁력이 있다."},
+  {w:"as a result",m:"결과적으로",s:["consequently","therefore","result in"],e:"Temperatures rose; as a result, glaciers melted faster.",k:"기온이 상승했고, 결과적으로 빙하가 더 빠르게 녹았다."},
+  {w:"in contrast",m:"반면에",s:["whereas","contrast with","differ from"],e:"Urban areas grew rapidly; in contrast, rural areas shrank.",k:"도시 지역은 빠르게 성장했고, 반면에 농촌 지역은 줄어들었다."},
+  {w:"in addition",m:"게다가",s:["furthermore","contribute to"],e:"In addition to heat, drought affects crop yields.",k:"열기에 더해, 가뭄도 작물 수확량에 영향을 준다."},
+  {w:"despite",m:"~에도 불구하고",s:["whereas","however","in contrast"],e:"Despite the risks, the expedition continued.",k:"위험에도 불구하고 탐험은 계속되었다."},
+  {w:"whereas",m:"반면에",s:["however","in contrast","contrast with"],e:"Some species adapted, whereas others died out.",k:"일부 종은 적응했지만, 반면에 다른 종들은 멸종했다."},
+  {w:"overall",m:"전반적으로",s:["consequently","therefore","eventually"],e:"Overall, the results support the original hypothesis.",k:"전반적으로, 결과는 원래의 가설을 뒷받침한다."},
+  {w:"on the other hand",m:"반면에",s:["however","whereas","in contrast"],e:"Coal is cheap; on the other hand, it pollutes heavily.",k:"석탄은 저렴하지만, 반면에 심각한 오염을 유발한다."},
+  {w:"feature",m:"특징/특징으로 하다",s:["characteristic","indicate","demonstrate"],e:"One key feature of this species is its migration pattern.",k:"이 종의 주요 특징 중 하나는 이동 패턴이다."},
+  {w:"characteristic",m:"특징/특성",s:["feature","significant","dominant"],e:"A key characteristic of mammals is warm blood.",k:"포유류의 핵심 특성은 온혈이다."},
+  {w:"considerable",m:"상당한",s:["significant","extensive","widespread"],e:"A considerable amount of energy is wasted in homes.",k:"상당한 양의 에너지가 가정에서 낭비된다."},
+  {w:"apparent",m:"분명한/겉보기의",s:["significant","indicate","demonstrate"],e:"It is apparent that the policy has failed.",k:"그 정책이 실패했음이 분명하다."},
+  {w:"crucial",m:"매우 중요한",s:["significant","fundamental","essential"],e:"Water is crucial for all forms of life.",k:"물은 모든 형태의 생명에 매우 중요하다."},
+  {w:"dominant",m:"지배적인",s:["widespread","significant","characteristic"],e:"English is the dominant language in global business.",k:"영어는 세계 비즈니스에서 지배적인 언어이다."},
+  {w:"complex",m:"복잡한",s:["diverse","extensive","considerable"],e:"The relationship between climate and wildlife is complex.",k:"기후와 야생 동물의 관계는 복잡하다."},
+  {w:"widespread",m:"광범위한",s:["extensive","dominant","considerable"],e:"The disease became widespread before a cure was found.",k:"치료법이 발견되기 전에 그 질병은 광범위하게 퍼졌다."},
+  {w:"diverse",m:"다양한",s:["complex","extensive","widespread"],e:"The Amazon contains diverse plant and animal life.",k:"아마존은 다양한 식물과 동물의 생명체를 포함한다."},
+  {w:"extensive",m:"광범위한",s:["widespread","diverse","considerable"],e:"The damage to the reef was extensive.",k:"산호초에 대한 피해는 광범위했다."},
+  {w:"fundamental",m:"근본적인",s:["crucial","essential","significant"],e:"Access to clean water is a fundamental human right.",k:"깨끗한 물에 대한 접근은 근본적인 인권이다."},
+  {w:"essential",m:"필수적인",s:["crucial","fundamental","significant"],e:"Vitamins are essential for good health.",k:"비타민은 건강에 필수적이다."},
+  {w:"however",m:"그러나",s:["whereas","despite","in contrast"],e:"The drug was effective; however, side effects were severe.",k:"약은 효과적이었지만, 그러나 부작용이 심각했다."},
+  {w:"therefore",m:"따라서",s:["consequently","as a result","overall"],e:"The evidence is clear; therefore, action is needed.",k:"증거는 명확하다, 따라서 조치가 필요하다."},
+  {w:"furthermore",m:"더욱이",s:["in addition","contribute to"],e:"Furthermore, the study found links to mental health.",k:"더욱이, 연구는 정신 건강과의 연관성을 발견했다."},
+  {w:"consequently",m:"결과적으로",s:["therefore","as a result","overall"],e:"Resources ran out; consequently, the project stopped.",k:"자원이 고갈되었고, 결과적으로 프로젝트가 중단되었다."},
+  {w:"alternatively",m:"그 대신에",s:["however","whereas","on the other hand"],e:"Alternatively, solar panels can power rural homes.",k:"그 대신에, 태양 전지판이 농촌 가정에 전력을 공급할 수 있다."},
+  {w:"notably",m:"특히",s:["significant","widespread","primarily"],e:"Temperatures rose, notably in Arctic regions.",k:"기온이 상승했는데, 특히 북극 지역에서 두드러졌다."},
+  {w:"primarily",m:"주로",s:["largely","notably","dominant"],e:"The disease primarily affects elderly people.",k:"그 질병은 주로 노인들에게 영향을 미친다."},
+  {w:"largely",m:"주로/대부분",s:["primarily","notably","considerable"],e:"The success was largely due to teamwork.",k:"그 성공은 주로 팀워크 덕분이었다."},
+];
+
+const catMap={
+  "assume":"사고·판단","perceive":"사고·판단","interpret":"사고·판단","identify":"사고·판단","suggest":"사고·판단","indicate":"사고·판단","imply":"사고·판단","conclude":"사고·판단","examine":"사고·판단","evaluate":"사고·판단","consider":"사고·판단","propose":"사고·판단","distinguish":"사고·판단","demonstrate":"사고·판단","acknowledge":"사고·판단",
+  "increase":"변화·과정","decrease":"변화·과정","improve":"변화·과정","reduce":"변화·과정","develop":"변화·과정","evolve":"변화·과정","transform":"변화·과정","emerge":"변화·과정","accelerate":"변화·과정","fluctuate":"변화·과정","stabilise":"변화·과정","shift":"변화·과정","modify":"변화·과정","expand":"변화·과정","decline":"변화·과정",
+  "attack":"행동·사건","invade":"행동·사건","capture":"행동·사건","pursue":"행동·사건","prevent":"행동·사건","protect":"행동·사건","destroy":"행동·사건","abandon":"행동·사건","establish":"행동·사건","adopt":"행동·사건","implement":"행동·사건","maintain":"행동·사건","release":"행동·사건","obtain":"행동·사건","conduct":"행동·사건",
+  "civilisation":"사회·역사","empire":"사회·역사","military":"사회·역사","territory":"사회·역사","trade":"사회·역사","colonise":"사회·역사","migration":"사회·역사","settlement":"사회·역사","revolt":"사회·역사","heritage":"사회·역사","authority":"사회·역사","inequality":"사회·역사","policy":"사회·역사","reform":"사회·역사","democracy":"사회·역사",
+  "cause":"원인·결과","lead to":"원인·결과","result in":"원인·결과","contribute to":"원인·결과","account for":"원인·결과","trigger":"원인·결과","influence":"원인·결과","affect":"원인·결과","determine":"원인·결과","generate":"원인·결과","overcome":"원인·결과","reflect":"원인·결과",
+  "period":"시간·순서","era":"시간·순서","century":"시간·순서","millennium":"시간·순서","subsequently":"시간·순서","prior to":"시간·순서","eventually":"시간·순서","contemporary":"시간·순서","ancient":"시간·순서","ongoing":"시간·순서",
+  "related to":"연결·관계","associated with":"연결·관계","depend on":"연결·관계","differ from":"연결·관계","similar to":"연결·관계","interact with":"연결·관계","contrast with":"연결·관계","correspond to":"연결·관계",
+  "research":"학문·연구","evidence":"학문·연구","theory":"학문·연구","hypothesis":"학문·연구","data":"학문·연구","observation":"학문·연구","significant":"학문·연구","accurate":"학문·연구","challenge":"학문·연구","technique":"학문·연구","analyse":"학문·연구","controversy":"학문·연구",
+  "habitat":"환경·자연","species":"환경·자연","ecosystem":"환경·자연","biodiversity":"환경·자연","conservation":"환경·자연","emission":"환경·자연","sustainable":"환경·자연","resource":"환경·자연","pollution":"환경·자연","extinct":"환경·자연",
+  "economy":"경제·사회","investment":"경제·사회","poverty":"경제·사회","employment":"경제·사회","consumption":"경제·사회","revenue":"경제·사회","demand":"경제·사회","supply":"경제·사회","infrastructure":"경제·사회","urbanisation":"경제·사회",
+  "play a role":"핵심표현","take place":"핵심표현","be likely to":"핵심표현","be responsible for":"핵심표현","in terms of":"핵심표현","as a result":"핵심표현","in contrast":"핵심표현","in addition":"핵심표현","despite":"핵심표현","whereas":"핵심표현","overall":"핵심표현","on the other hand":"핵심표현",
+  "feature":"묘사·설명","characteristic":"묘사·설명","considerable":"묘사·설명","apparent":"묘사·설명","crucial":"묘사·설명","dominant":"묘사·설명","complex":"묘사·설명","widespread":"묘사·설명","diverse":"묘사·설명","extensive":"묘사·설명","fundamental":"묘사·설명","essential":"묘사·설명",
+  "however":"구조·논리","therefore":"구조·논리","furthermore":"구조·논리","consequently":"구조·논리","alternatively":"구조·논리","notably":"구조·논리","primarily":"구조·논리","largely":"구조·논리",
+};
+
+const allCats=["전체","사고·판단","변화·과정","행동·사건","사회·역사","원인·결과","시간·순서","연결·관계","학문·연구","환경·자연","경제·사회","핵심표현","묘사·설명","구조·논리"];
+const wordSet=new Set(data.map(d=>d.w));
+
+function getCatCount(cat){
+  if(cat==="전체") return data.length;
+  return data.filter(d=>catMap[d.w]===cat).length;
+}
+
+let activeCat="전체";
+let openSet=new Set();
+let highlightWord=null;
+
+function goTo(w){
+  activeCat="전체";
+  buildCats();
+  document.getElementById("search").value="";
+  openSet.clear();
+  openSet.add(w);
+  highlightWord=w;
+  render("");
+  setTimeout(()=>{
+    const id="card-"+w.replace(/ /g,"-");
+    const el=document.getElementById(id);
+    if(el)el.scrollIntoView({behavior:"smooth",block:"center"});
+    setTimeout(()=>{highlightWord=null;render(document.getElementById("search").value);},1200);
+  },80);
+}
+
+function render(q){
+  const lower=q.toLowerCase();
+  const filtered=data.filter(d=>{
+    const catOk=activeCat==="전체"||(catMap[d.w]===activeCat);
+    const searchOk=!lower||d.w.includes(lower)||d.m.includes(lower)||d.s.some(s=>s.includes(lower));
+    return catOk&&searchOk;
+  });
+  document.getElementById("cnt").textContent=filtered.length+"개";
+  const list=document.getElementById("list");
+  if(!filtered.length){list.innerHTML='<div class="empty">검색 결과가 없습니다.</div>';return;}
+  list.innerHTML=filtered.map(d=>{
+    const open=openSet.has(d.w);
+    const hl=highlightWord===d.w;
+    const id="card-"+d.w.replace(/ /g,"-");
+    return`<div class="card${open?" open":""}${hl?" highlight":""}" id="${id}" onclick="toggleCard('${d.w.replace(/'/g,"\\'").replace(/"/g,"&quot;")}')">
+      <div class="card-top">
+        <span class="word">${d.w}</span>
+        <span class="meaning">${d.m}</span>
+        <span class="arrow">&#8964;</span>
+      </div>
+      ${open?`<div class="detail">
+        <div class="syn-row">${d.s.map(s=>{
+          const linked=wordSet.has(s);
+          return`<span class="syn${linked?" linked":""}"${linked?` onclick="event.stopPropagation();goTo('${s.replace(/'/g,"\\'")}')"`:""}>${s}</span>`;
+        }).join("")}</div>
+        <div class="ex-en">${d.e}</div>
+        <div class="ex-kr">${d.k}</div>
+      </div>`:""}
+    </div>`;
+  }).join("");
+}
+
+function toggleCard(w){
+  if(openSet.has(w))openSet.delete(w);else openSet.add(w);
+  render(document.getElementById("search").value);
+}
+
+function buildCats(){
+  document.getElementById("cats").innerHTML=allCats.map(c=>
+    `<button class="cat-btn${c===activeCat?" active":""}" onclick="setcat('${c}')">
+      ${c}<span class="badge">${getCatCount(c)}</span>
+    </button>`
+  ).join("");
+}
+
+function setcat(c){activeCat=c;buildCats();render(document.getElementById("search").value);}
+document.getElementById("search").addEventListener("input",e=>render(e.target.value));
+buildCats();render("");
+</script>
+</body>
+</html>
