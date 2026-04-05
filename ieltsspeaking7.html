@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Speaking 7.0 주제별 단어 140</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f5;color:#1a1a1a;-webkit-text-size-adjust:100%}
+.top{background:#fff;padding:14px 16px;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:10;display:flex;flex-direction:column;gap:10px}
+.top-row{display:flex;align-items:center;gap:8px}
+.title{font-size:17px;font-weight:600;flex:1}
+.cnt{font-size:12px;color:#888;background:#f0f0f0;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.search-wrap input{width:100%;padding:10px 14px;font-size:15px;border:1px solid #ddd;border-radius:10px;background:#fafafa;color:#1a1a1a;outline:none}
+.search-wrap input:focus{border-color:#4a90e2;background:#fff}
+.voice-row{display:flex;align-items:center;gap:8px}
+.voice-row label{font-size:12px;color:#888;white-space:nowrap}
+.voice-row select{flex:1;font-size:12px;padding:6px 8px;border:1px solid #ddd;border-radius:8px;background:#fff;color:#1a1a1a}
+.cats{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cat-btn{font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid #ddd;background:#fff;color:#666;cursor:pointer;white-space:nowrap;min-height:34px;display:flex;align-items:center;gap:4px}
+.cat-btn.active{background:#4a90e2;color:#fff;border-color:#4a90e2;font-weight:600}
+.cat-btn .badge{font-size:11px;padding:1px 5px;border-radius:999px;background:rgba(0,0,0,0.1)}
+.cat-btn.active .badge{background:rgba(255,255,255,0.3)}
+.list{padding:12px 16px;display:flex;flex-direction:column;gap:8px;max-width:720px;margin:0 auto;width:100%}
+.card{background:#fff;border:1px solid #e8e8e8;border-radius:14px;padding:14px 16px;transition:border-color 0.15s}
+.card.open{border-color:#4a90e2}
+.card-top{display:flex;align-items:center;gap:8px;cursor:pointer}
+.word{font-size:16px;font-weight:600;color:#1a1a1a;flex:1}
+.meaning{font-size:13px;color:#888}
+.speak-btn{width:32px;height:32px;border-radius:50%;border:1px solid #ddd;background:#f5f5f5;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:13px;color:#555}
+.speak-btn.playing{border-color:#4a90e2;background:#eef5ff;color:#4a90e2}
+.arrow{font-size:13px;color:#bbb;transition:transform 0.2s;flex-shrink:0}
+.card.open .arrow{transform:rotate(180deg)}
+.detail{margin-top:12px;padding-top:12px;border-top:1px solid #f0f0f0;display:flex;flex-direction:column;gap:8px}
+.ex-wrap{display:flex;align-items:flex-start;gap:8px}
+.ex-speak{width:28px;height:28px;border-radius:50%;border:1px solid #ddd;background:#f5f5f5;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:11px;margin-top:2px;color:#555}
+.ex-speak.playing{border-color:#4a90e2;background:#eef5ff;color:#4a90e2}
+.ex-text{flex:1}
+.ex-en{font-size:13px;color:#333;line-height:1.65;border-left:3px solid #4a90e2;padding-left:10px}
+.ex-kr{font-size:12px;color:#999;line-height:1.65;padding-left:13px;font-style:italic;margin-top:4px}
+.empty{padding:3rem 1rem;text-align:center;font-size:14px;color:#999}
+.footer{text-align:center;padding:2rem 1rem;font-size:12px;color:#ccc}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="top-row">
+    <span class="title">IELTS Speaking 7.0 주제별 단어 140</span>
+    <span class="cnt" id="cnt">140개</span>
+  </div>
+  <div class="search-wrap">
+    <input type="text" placeholder="단어 또는 뜻 검색..." id="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+  </div>
+  <div class="voice-row">
+    <label>목소리</label>
+    <select id="voiceSelect"></select>
+  </div>
+  <div class="cats" id="cats"></div>
+</div>
+<div class="list" id="list"></div>
+<div class="footer">IELTS Speaking 7.0 주제별 핵심 단어 140개</div>
+
+<script>
+const data=[
+  {w:"renewable energy",m:"재생 에너지",c:"환경·기후",e:"We need to invest heavily in renewable energy to combat climate change.",k:"기후 변화에 대응하기 위해 재생 에너지에 대규모 투자가 필요해요."},
+  {w:"deforestation",m:"삼림 벌채",c:"환경·기후",e:"Deforestation is destroying the habitats of countless species.",k:"삼림 벌채가 수많은 종의 서식지를 파괴하고 있어요."},
+  {w:"biodiversity",m:"생물 다양성",c:"환경·기후",e:"Biodiversity loss is one of the most serious threats facing our planet.",k:"생물 다양성 손실이 우리 지구가 직면한 가장 심각한 위협 중 하나예요."},
+  {w:"carbon emissions",m:"탄소 배출",c:"환경·기후",e:"Reducing carbon emissions is essential to slow down global warming.",k:"지구 온난화를 늦추기 위해 탄소 배출을 줄이는 것이 필수적이에요."},
+  {w:"carbon footprint",m:"탄소 발자국",c:"환경·기후",e:"I try to reduce my carbon footprint by using public transport.",k:"대중교통을 이용해 탄소 발자국을 줄이려고 노력해요."},
+  {w:"fossil fuels",m:"화석 연료",c:"환경·기후",e:"Our dependence on fossil fuels is the root cause of many environmental problems.",k:"화석 연료 의존이 많은 환경 문제의 근본 원인이에요."},
+  {w:"ecosystem",m:"생태계",c:"환경·기후",e:"Plastic pollution is causing serious damage to marine ecosystems.",k:"플라스틱 오염이 해양 생태계에 심각한 피해를 주고 있어요."},
+  {w:"sustainable",m:"지속 가능한",c:"환경·기후",e:"We need more sustainable approaches to agriculture and food production.",k:"농업과 식품 생산에 더 지속 가능한 접근법이 필요해요."},
+  {w:"conservation",m:"보존",c:"환경·기후",e:"Wildlife conservation efforts have helped save many endangered species.",k:"야생 동물 보존 노력이 많은 멸종 위기종을 구하는 데 도움이 됐어요."},
+  {w:"pollution",m:"오염",c:"환경·기후",e:"Air pollution in major cities is a serious threat to public health.",k:"대도시의 대기 오염은 공중 보건에 심각한 위협이에요."},
+  {w:"climate change",m:"기후 변화",c:"환경·기후",e:"Climate change is no longer a future threat — it's happening right now.",k:"기후 변화는 더 이상 미래의 위협이 아니에요 — 지금 바로 일어나고 있어요."},
+  {w:"global warming",m:"지구 온난화",c:"환경·기후",e:"Global warming is causing extreme weather events to become more frequent.",k:"지구 온난화로 극단적인 기상 현상이 더 자주 발생하고 있어요."},
+  {w:"environmentally conscious",m:"환경을 의식하는",c:"환경·기후",e:"Younger generations tend to be far more environmentally conscious.",k:"젊은 세대가 환경에 대한 의식이 훨씬 높은 경향이 있어요."},
+  {w:"habitat destruction",m:"서식지 파괴",c:"환경·기후",e:"Habitat destruction is the leading cause of species extinction.",k:"서식지 파괴가 종 멸종의 주요 원인이에요."},
+  {w:"recycling",m:"재활용",c:"환경·기후",e:"Recycling alone is not enough — we need to reduce consumption overall.",k:"재활용만으로는 충분하지 않아요 — 전반적인 소비를 줄여야 해요."},
+  {w:"flood",m:"홍수",c:"환경·기후",e:"Floods are becoming more frequent due to changes in global weather patterns.",k:"기상 패턴 변화로 홍수가 더 자주 발생하고 있어요."},
+  {w:"drought",m:"가뭄",c:"환경·기후",e:"Severe droughts are threatening food security in many parts of the world.",k:"심각한 가뭄이 세계 여러 지역의 식량 안보를 위협하고 있어요."},
+  {w:"ozone layer",m:"오존층",c:"환경·기후",e:"Protecting the ozone layer is crucial to preventing harmful UV radiation.",k:"해로운 자외선을 막기 위해 오존층을 보호하는 것이 중요해요."},
+  {w:"depletion",m:"고갈",c:"환경·기후",e:"The depletion of natural resources is a growing concern worldwide.",k:"천연자원의 고갈이 전 세계적으로 커지는 우려사항이에요."},
+  {w:"greenhouse gas",m:"온실 가스",c:"환경·기후",e:"Greenhouse gas emissions from agriculture are often overlooked.",k:"농업에서 나오는 온실 가스 배출은 종종 간과돼요."},
+  {w:"artificial intelligence",m:"인공지능",c:"기술·SNS",e:"Artificial intelligence is already reshaping the way we work and live.",k:"인공지능이 이미 우리가 일하고 사는 방식을 재형성하고 있어요."},
+  {w:"algorithm",m:"알고리즘",c:"기술·SNS",e:"Social media algorithms are designed to keep us scrolling for as long as possible.",k:"소셜 미디어 알고리즘은 우리가 최대한 오래 스크롤하도록 설계됐어요."},
+  {w:"misinformation",m:"잘못된 정보",c:"기술·SNS",e:"Misinformation spreads much faster than accurate news on social media.",k:"잘못된 정보가 소셜 미디어에서 정확한 뉴스보다 훨씬 빠르게 퍼져요."},
+  {w:"automation",m:"자동화",c:"기술·SNS",e:"Automation is replacing repetitive jobs across many industries.",k:"자동화가 많은 산업에서 반복적인 일자리를 대체하고 있어요."},
+  {w:"cyberbullying",m:"사이버 괴롭힘",c:"기술·SNS",e:"Cyberbullying has become a serious mental health issue for young people.",k:"사이버 괴롭힘이 젊은이들에게 심각한 정신 건강 문제가 됐어요."},
+  {w:"digital literacy",m:"디지털 리터러시",c:"기술·SNS",e:"Digital literacy is now as important as reading and writing.",k:"디지털 리터러시는 이제 읽기와 쓰기만큼 중요해요."},
+  {w:"privacy",m:"개인 정보",c:"기술·SNS",e:"Many people don't realise how much of their privacy they give up online.",k:"많은 사람들이 온라인에서 자신의 프라이버시를 얼마나 포기하는지 몰라요."},
+  {w:"remote work",m:"원격 근무",c:"기술·SNS",e:"Remote work has given many people more flexibility but also more isolation.",k:"원격 근무가 많은 사람들에게 더 많은 유연성을 줬지만 고립감도 줬어요."},
+  {w:"screen time",m:"화면 사용 시간",c:"기술·SNS",e:"Excessive screen time is linked to poor sleep and reduced attention spans.",k:"과도한 화면 사용 시간은 수면 부족과 주의력 저하와 연관돼요."},
+  {w:"data breach",m:"데이터 유출",c:"기술·SNS",e:"Major data breaches have made people far more cautious about online security.",k:"대규모 데이터 유출로 사람들이 온라인 보안에 훨씬 더 신중해졌어요."},
+  {w:"influencer",m:"인플루언서",c:"기술·SNS",e:"Influencers can shape public opinion in ways traditional media cannot.",k:"인플루언서는 전통 미디어가 할 수 없는 방식으로 여론을 형성할 수 있어요."},
+  {w:"digital divide",m:"디지털 격차",c:"기술·SNS",e:"The digital divide between wealthy and poor nations continues to grow.",k:"부유한 국가와 가난한 국가 간의 디지털 격차가 계속 커지고 있어요."},
+  {w:"e-commerce",m:"전자 상거래",c:"기술·SNS",e:"E-commerce has transformed the retail industry beyond recognition.",k:"전자 상거래가 소매 산업을 알아볼 수 없을 만큼 변화시켰어요."},
+  {w:"virtual reality",m:"가상 현실",c:"기술·SNS",e:"Virtual reality is beginning to transform education and training.",k:"가상 현실이 교육과 훈련을 변화시키기 시작하고 있어요."},
+  {w:"surveillance",m:"감시",c:"기술·SNS",e:"Increased digital surveillance raises serious concerns about civil liberties.",k:"디지털 감시 증가가 시민 자유에 대한 심각한 우려를 낳고 있어요."},
+  {w:"addiction",m:"중독",c:"기술·SNS",e:"Smartphone addiction is becoming a widespread problem among all age groups.",k:"스마트폰 중독이 모든 연령대에서 광범위한 문제가 되고 있어요."},
+  {w:"innovation",m:"혁신",c:"기술·SNS",e:"Technological innovation is happening at an unprecedented pace.",k:"기술 혁신이 전례 없는 속도로 일어나고 있어요."},
+  {w:"cybersecurity",m:"사이버 보안",c:"기술·SNS",e:"Cybersecurity has become one of the most critical issues for businesses.",k:"사이버 보안이 기업들에게 가장 중요한 문제 중 하나가 됐어요."},
+  {w:"streaming",m:"스트리밍",c:"기술·SNS",e:"Streaming services have completely replaced traditional TV for many people.",k:"스트리밍 서비스가 많은 사람들에게 전통적인 TV를 완전히 대체했어요."},
+  {w:"curriculum",m:"교육과정",c:"교육",e:"The school curriculum needs to better reflect the needs of the modern world.",k:"학교 교육과정이 현대 세계의 필요를 더 잘 반영해야 해요."},
+  {w:"tuition fees",m:"등록금",c:"교육",e:"Soaring tuition fees are preventing many talented students from going to university.",k:"치솟는 등록금이 많은 재능 있는 학생들이 대학에 가는 것을 막고 있어요."},
+  {w:"vocational training",m:"직업 훈련",c:"교육",e:"Vocational training can be just as valuable as a university degree.",k:"직업 훈련은 대학 학위만큼 가치 있을 수 있어요."},
+  {w:"critical thinking",m:"비판적 사고",c:"교육",e:"Critical thinking is one of the most important skills schools can teach.",k:"비판적 사고는 학교가 가르칠 수 있는 가장 중요한 기술 중 하나예요."},
+  {w:"literacy",m:"문해력",c:"교육",e:"Improving literacy rates is fundamental to reducing poverty.",k:"문해율을 높이는 것이 빈곤 감소의 근본이에요."},
+  {w:"academic pressure",m:"학업 압박",c:"교육",e:"Many children suffer from intense academic pressure from a very young age.",k:"많은 아이들이 아주 어린 나이부터 심한 학업 압박에 시달려요."},
+  {w:"scholarship",m:"장학금",c:"교육",e:"More scholarships should be available to students from disadvantaged backgrounds.",k:"불우한 배경의 학생들에게 더 많은 장학금이 제공돼야 해요."},
+  {w:"extracurricular activities",m:"과외 활동",c:"교육",e:"Extracurricular activities help students develop skills beyond academics.",k:"과외 활동은 학생들이 학업 이외의 기술을 개발하는 데 도움이 돼요."},
+  {w:"distance learning",m:"원격 학습",c:"교육",e:"Distance learning has made education accessible to people in remote areas.",k:"원격 학습이 외딴 지역 사람들도 교육에 접근할 수 있게 했어요."},
+  {w:"rote learning",m:"암기식 학습",c:"교육",e:"Rote learning fails to develop creativity or independent thinking.",k:"암기식 학습은 창의성이나 독립적 사고를 키우지 못해요."},
+  {w:"peer pressure",m:"또래 압박",c:"교육",e:"Peer pressure can significantly influence a student's attitude towards studying.",k:"또래 압박이 공부에 대한 학생의 태도에 크게 영향을 미칠 수 있어요."},
+  {w:"lifelong learning",m:"평생 학습",c:"교육",e:"In today's rapidly changing world, lifelong learning is no longer optional.",k:"빠르게 변화하는 오늘날 세상에서 평생 학습은 더 이상 선택이 아니에요."},
+  {w:"higher education",m:"고등 교육",c:"교육",e:"Higher education is increasingly seen as essential for career success.",k:"고등 교육이 커리어 성공에 필수적인 것으로 점점 더 여겨지고 있어요."},
+  {w:"standardised testing",m:"표준화 시험",c:"교육",e:"Standardised testing puts enormous pressure on students.",k:"표준화 시험이 학생들에게 엄청난 압박을 줘요."},
+  {w:"dropout rate",m:"중퇴율",c:"교육",e:"High dropout rates are often linked to poverty and lack of family support.",k:"높은 중퇴율은 종종 빈곤과 가족 지원 부족과 연관돼요."},
+  {w:"inclusive education",m:"통합 교육",c:"교육",e:"Inclusive education ensures all students can learn together regardless of ability.",k:"통합 교육은 능력에 관계없이 모든 학생이 함께 배울 수 있도록 해요."},
+  {w:"emotional intelligence",m:"감성 지능",c:"교육",e:"Emotional intelligence is just as important as academic intelligence for success.",k:"성공을 위해 감성 지능은 학문적 지능만큼 중요해요."},
+  {w:"bilingual education",m:"이중 언어 교육",c:"교육",e:"Bilingual education gives children significant cognitive and cultural advantages.",k:"이중 언어 교육이 아이들에게 상당한 인지적, 문화적 이점을 줘요."},
+  {w:"private tutoring",m:"개인 과외",c:"교육",e:"The rise of private tutoring is widening the gap between rich and poor students.",k:"개인 과외의 증가가 부유한 학생과 가난한 학생 간의 격차를 넓히고 있어요."},
+  {w:"social skills",m:"사회적 기술",c:"교육",e:"Schools should do more to develop students' social skills alongside academics.",k:"학교는 학업과 함께 학생들의 사회적 기술 개발에 더 힘써야 해요."},
+  {w:"mental health",m:"정신 건강",c:"건강·웰빙",e:"Mental health awareness has increased significantly in recent years.",k:"최근 몇 년간 정신 건강에 대한 인식이 크게 높아졌어요."},
+  {w:"obesity",m:"비만",c:"건강·웰빙",e:"Childhood obesity is one of the most pressing public health issues today.",k:"아동 비만이 오늘날 가장 시급한 공중 보건 문제 중 하나예요."},
+  {w:"sedentary lifestyle",m:"앉아서 생활하는 방식",c:"건강·웰빙",e:"A sedentary lifestyle dramatically increases the risk of heart disease.",k:"앉아서 생활하는 방식이 심장병 위험을 크게 높여요."},
+  {w:"preventive healthcare",m:"예방 의료",c:"건강·웰빙",e:"Investing in preventive healthcare is far more cost-effective than treating disease.",k:"예방 의료에 투자하는 것이 질병 치료보다 훨씬 비용 효율적이에요."},
+  {w:"nutrition",m:"영양",c:"건강·웰빙",e:"Good nutrition is the cornerstone of both physical and mental wellbeing.",k:"좋은 영양은 신체적, 정신적 웰빙 모두의 초석이에요."},
+  {w:"burnout",m:"번아웃",c:"건강·웰빙",e:"Burnout is increasingly common in high-pressure work environments.",k:"번아웃이 압박이 높은 업무 환경에서 점점 더 흔해지고 있어요."},
+  {w:"anxiety",m:"불안",c:"건강·웰빙",e:"Anxiety disorders are among the most common mental health conditions worldwide.",k:"불안 장애는 전 세계적으로 가장 흔한 정신 건강 질환 중 하나예요."},
+  {w:"immune system",m:"면역 체계",c:"건강·웰빙",e:"Regular sleep and exercise are essential for maintaining a strong immune system.",k:"규칙적인 수면과 운동이 강한 면역 체계를 유지하는 데 필수적이에요."},
+  {w:"chronic disease",m:"만성 질환",c:"건강·웰빙",e:"Lifestyle choices have a profound impact on the risk of chronic disease.",k:"생활 방식 선택이 만성 질환 위험에 깊은 영향을 미쳐요."},
+  {w:"mindfulness",m:"마음 챙김",c:"건강·웰빙",e:"Mindfulness practices have been shown to significantly reduce stress and anxiety.",k:"마음 챙김 연습이 스트레스와 불안을 크게 줄이는 것으로 나타났어요."},
+  {w:"wellbeing",m:"웰빙",c:"건강·웰빙",e:"True wellbeing includes mental, physical and social aspects of health.",k:"진정한 웰빙은 건강의 정신적, 신체적, 사회적 측면을 포함해요."},
+  {w:"work-life balance",m:"일과 삶의 균형",c:"건강·웰빙",e:"A poor work-life balance is one of the biggest causes of burnout.",k:"나쁜 일과 삶의 균형이 번아웃의 가장 큰 원인 중 하나예요."},
+  {w:"healthcare system",m:"의료 시스템",c:"건강·웰빙",e:"A well-funded healthcare system is the foundation of a healthy society.",k:"잘 자금 지원되는 의료 시스템이 건강한 사회의 기초예요."},
+  {w:"depression",m:"우울증",c:"건강·웰빙",e:"Depression affects millions but remains heavily stigmatised worldwide.",k:"우울증이 수백만 명에게 영향을 미치지만 전 세계적으로 여전히 심한 낙인이 찍혀 있어요."},
+  {w:"physical activity",m:"신체 활동",c:"건강·웰빙",e:"Regular physical activity is one of the most effective ways to improve mood.",k:"규칙적인 신체 활동이 기분을 개선하는 가장 효과적인 방법 중 하나예요."},
+  {w:"insomnia",m:"불면증",c:"건강·웰빙",e:"Insomnia is becoming increasingly common due to stress and excessive screen time.",k:"스트레스와 과도한 화면 사용으로 불면증이 점점 더 흔해지고 있어요."},
+  {w:"life expectancy",m:"기대 수명",c:"건강·웰빙",e:"Life expectancy has increased dramatically over the past century.",k:"지난 세기 동안 기대 수명이 크게 증가했어요."},
+  {w:"stigma",m:"낙인",c:"건강·웰빙",e:"The stigma around mental health is slowly decreasing but still very much exists.",k:"정신 건강에 대한 낙인이 서서히 줄어들고 있지만 여전히 많이 존재해요."},
+  {w:"epidemic",m:"유행병",c:"건강·웰빙",e:"Obesity has been described as a global epidemic by health organisations.",k:"비만이 보건 기관들에 의해 세계적 유행병으로 묘사됐어요."},
+  {w:"income inequality",m:"소득 불평등",c:"사회·경제",e:"Income inequality is one of the defining challenges of the 21st century.",k:"소득 불평등이 21세기의 결정적인 도전 중 하나예요."},
+  {w:"unemployment",m:"실업",c:"사회·경제",e:"High unemployment leads to social instability and increased crime.",k:"높은 실업률은 사회 불안정과 증가하는 범죄로 이어져요."},
+  {w:"poverty",m:"빈곤",c:"사회·경제",e:"Poverty is a complex cycle that requires systemic solutions.",k:"빈곤은 체계적인 해결책이 필요한 복잡한 순환이에요."},
+  {w:"social mobility",m:"사회적 이동성",c:"사회·경제",e:"Education is the most powerful tool for improving social mobility.",k:"교육은 사회적 이동성을 향상시키는 가장 강력한 도구예요."},
+  {w:"inflation",m:"인플레이션",c:"사회·경제",e:"Rising inflation is eroding the purchasing power of ordinary workers.",k:"오르는 인플레이션이 일반 근로자들의 구매력을 잠식하고 있어요."},
+  {w:"affordable housing",m:"저렴한 주택",c:"사회·경제",e:"The lack of affordable housing is one of the most urgent urban problems.",k:"저렴한 주택의 부족이 가장 시급한 도시 문제 중 하나예요."},
+  {w:"gender equality",m:"성 평등",c:"사회·경제",e:"Despite significant progress, gender equality in the workplace remains elusive.",k:"상당한 진전에도 불구하고 직장 내 성 평등은 여전히 달성하기 어려워요."},
+  {w:"minimum wage",m:"최저 임금",c:"사회·경제",e:"Many argue that the minimum wage needs to be significantly increased.",k:"많은 사람들이 최저 임금을 크게 인상해야 한다고 주장해요."},
+  {w:"welfare system",m:"복지 시스템",c:"사회·경제",e:"A strong welfare system protects the most vulnerable members of society.",k:"강력한 복지 시스템이 사회에서 가장 취약한 구성원을 보호해요."},
+  {w:"consumerism",m:"소비주의",c:"사회·경제",e:"Consumerism is driving unsustainable levels of production and waste.",k:"소비주의가 지속 불가능한 수준의 생산과 낭비를 이끌고 있어요."},
+  {w:"corruption",m:"부패",c:"사회·경제",e:"Corruption undermines trust in government and slows economic development.",k:"부패가 정부에 대한 신뢰를 무너뜨리고 경제 발전을 늦춰요."},
+  {w:"globalisation",m:"세계화",c:"사회·경제",e:"Globalisation has created winners and losers in almost every country.",k:"세계화가 거의 모든 나라에서 승자와 패자를 만들어냈어요."},
+  {w:"economic growth",m:"경제 성장",c:"사회·경제",e:"Economic growth alone does not guarantee an improvement in quality of life.",k:"경제 성장만으로는 삶의 질 향상을 보장하지 않아요."},
+  {w:"entrepreneurship",m:"기업가 정신",c:"사회·경제",e:"Encouraging entrepreneurship is vital for driving economic innovation.",k:"기업가 정신을 장려하는 것이 경제 혁신을 이끄는 데 필수적이에요."},
+  {w:"gig economy",m:"긱 이코노미",c:"사회·경제",e:"The gig economy offers flexibility but often lacks job security.",k:"긱 이코노미는 유연성을 제공하지만 종종 고용 보안이 없어요."},
+  {w:"national debt",m:"국가 부채",c:"사회·경제",e:"Rising national debt is a concern for future generations.",k:"증가하는 국가 부채가 미래 세대에게 우려사항이에요."},
+  {w:"financial literacy",m:"금융 이해력",c:"사회·경제",e:"Financial literacy should be taught in schools from an early age.",k:"금융 이해력은 어린 나이부터 학교에서 가르쳐야 해요."},
+  {w:"austerity",m:"긴축 정책",c:"사회·경제",e:"Austerity measures have cut public services that many people rely on.",k:"긴축 정책이 많은 사람들이 의존하는 공공 서비스를 삭감했어요."},
+  {w:"outsourcing",m:"아웃소싱",c:"사회·경제",e:"Outsourcing has reduced costs but eliminated jobs in many regions.",k:"아웃소싱이 비용을 줄였지만 많은 지역에서 일자리를 없앴어요."},
+  {w:"tax",m:"세금",c:"사회·경제",e:"Higher taxes on the wealthy could help fund better public services.",k:"부유층에 대한 더 높은 세금이 더 나은 공공 서비스 재원 마련에 도움이 될 수 있어요."},
+  {w:"urbanisation",m:"도시화",c:"도시·여행",e:"Rapid urbanisation is putting enormous pressure on city infrastructure.",k:"급격한 도시화가 도시 기반시설에 엄청난 압박을 가하고 있어요."},
+  {w:"infrastructure",m:"기반시설",c:"도시·여행",e:"Without modern infrastructure, economic development is almost impossible.",k:"현대적인 기반시설 없이는 경제 발전이 거의 불가능해요."},
+  {w:"public transportation",m:"대중교통",c:"도시·여행",e:"Efficient public transportation is key to reducing urban congestion.",k:"효율적인 대중교통이 도시 혼잡을 줄이는 열쇠예요."},
+  {w:"traffic congestion",m:"교통 혼잡",c:"도시·여행",e:"Traffic congestion costs cities billions in lost productivity every year.",k:"교통 혼잡이 매년 수십억의 생산성 손실을 도시에 안겨줘요."},
+  {w:"green space",m:"녹지 공간",c:"도시·여행",e:"Access to green spaces is strongly linked to better mental health.",k:"녹지 공간에 대한 접근이 더 나은 정신 건강과 강하게 연관돼요."},
+  {w:"gentrification",m:"젠트리피케이션",c:"도시·여행",e:"Gentrification improves neighbourhoods but displaces long-term residents.",k:"젠트리피케이션이 동네를 개선하지만 장기 거주자들을 이주시켜요."},
+  {w:"overpopulation",m:"과밀화",c:"도시·여행",e:"Overpopulation in megacities creates serious challenges around housing.",k:"거대 도시의 과밀화가 주택 문제에 심각한 도전을 만들어요."},
+  {w:"cosmopolitan",m:"국제적인",c:"도시·여행",e:"Living in a cosmopolitan city exposes you to different cultures and perspectives.",k:"국제적인 도시에 사는 것이 다양한 문화와 관점에 노출시켜줘요."},
+  {w:"culture shock",m:"문화 충격",c:"도시·여행",e:"Culture shock is a natural part of adapting to life in a new country.",k:"문화 충격은 새로운 나라에서의 생활에 적응하는 자연스러운 과정이에요."},
+  {w:"sustainable tourism",m:"지속 가능한 관광",c:"도시·여행",e:"Sustainable tourism minimises environmental damage while supporting local economies.",k:"지속 가능한 관광은 환경 피해를 최소화하면서 지역 경제를 지원해요."},
+  {w:"urban planning",m:"도시 계획",c:"도시·여행",e:"Good urban planning makes cities more liveable and environmentally friendly.",k:"좋은 도시 계획이 도시를 더 살기 좋고 환경 친화적으로 만들어요."},
+  {w:"commute",m:"통근",c:"도시·여행",e:"Long daily commutes are a major source of stress for city workers.",k:"긴 일상 통근이 도시 근로자들의 주요 스트레스 원인이에요."},
+  {w:"rural area",m:"농촌 지역",c:"도시·여행",e:"Many young people are leaving rural areas in search of better opportunities.",k:"많은 젊은이들이 더 나은 기회를 찾아 농촌 지역을 떠나고 있어요."},
+  {w:"homelessness",m:"노숙",c:"도시·여행",e:"Homelessness in major cities is a visible sign of wider social inequality.",k:"대도시의 노숙은 더 넓은 사회적 불평등의 눈에 보이는 표시예요."},
+  {w:"immigration",m:"이민",c:"도시·여행",e:"Immigration has shaped the culture and economy of many major cities.",k:"이민이 많은 대도시의 문화와 경제를 형성했어요."},
+  {w:"local community",m:"지역 사회",c:"도시·여행",e:"A strong sense of local community makes cities more resilient.",k:"강한 지역 사회 의식이 도시를 더 회복력 있게 만들어요."},
+  {w:"noise pollution",m:"소음 공해",c:"도시·여행",e:"Noise pollution is a significant but often overlooked health issue in cities.",k:"소음 공해는 도시에서 중요하지만 종종 간과되는 건강 문제예요."},
+  {w:"smart city",m:"스마트 시티",c:"도시·여행",e:"Smart cities use technology to improve efficiency and quality of life.",k:"스마트 시티는 기술을 활용해 효율성과 삶의 질을 높여요."},
+  {w:"air travel",m:"항공 여행",c:"도시·여행",e:"Air travel contributes significantly to global carbon emissions.",k:"항공 여행이 세계 탄소 배출에 크게 기여해요."},
+  {w:"tourist attraction",m:"관광 명소",c:"도시·여행",e:"Over-tourism is damaging many of the world's most famous tourist attractions.",k:"과잉 관광이 세계에서 가장 유명한 관광 명소들을 훼손하고 있어요."},
+  {w:"cultural identity",m:"문화적 정체성",c:"문화·사회",e:"Globalisation poses a real threat to the cultural identity of smaller nations.",k:"세계화가 소규모 국가들의 문화적 정체성에 실질적인 위협을 가하고 있어요."},
+  {w:"diversity",m:"다양성",c:"문화·사회",e:"Diversity in society leads to greater creativity and innovation.",k:"사회의 다양성이 더 큰 창의성과 혁신으로 이어져요."},
+  {w:"discrimination",m:"차별",c:"문화·사회",e:"Discrimination based on race or gender is unacceptable in any society.",k:"인종이나 성별에 기반한 차별은 어느 사회에서도 용납될 수 없어요."},
+  {w:"tradition",m:"전통",c:"문화·사회",e:"It is important to preserve cultural traditions while adapting to modern life.",k:"현대 생활에 적응하면서도 문화적 전통을 보존하는 것이 중요해요."},
+  {w:"stereotype",m:"고정관념",c:"문화·사회",e:"Travel is one of the best ways to break down cultural stereotypes.",k:"여행은 문화적 고정관념을 깨는 가장 좋은 방법 중 하나예요."},
+  {w:"integration",m:"통합",c:"문화·사회",e:"Successful integration of immigrants enriches both the host country and newcomers.",k:"이민자들의 성공적인 통합이 수용국과 신규 이민자 모두를 풍요롭게 해요."},
+  {w:"generation gap",m:"세대 차이",c:"문화·사회",e:"The generation gap has widened significantly due to rapid technological change.",k:"급격한 기술 변화로 세대 차이가 크게 벌어졌어요."},
+  {w:"aging population",m:"고령화 인구",c:"문화·사회",e:"An aging population puts enormous strain on pension systems and healthcare.",k:"고령화 인구가 연금 시스템과 의료에 엄청난 부담을 줘요."},
+  {w:"nuclear family",m:"핵가족",c:"문화·사회",e:"The nuclear family has replaced extended family structures in many countries.",k:"핵가족이 많은 나라에서 확대 가족 구조를 대체했어요."},
+  {w:"feminism",m:"페미니즘",c:"문화·사회",e:"Feminism advocates for equal rights and opportunities for all genders.",k:"페미니즘은 모든 성별의 동등한 권리와 기회를 옹호해요."},
+  {w:"multiculturalism",m:"다문화주의",c:"문화·사회",e:"Multiculturalism enriches society by bringing together different perspectives.",k:"다문화주의가 다양한 관점을 한데 모아 사회를 풍요롭게 해요."},
+  {w:"social norm",m:"사회적 규범",c:"문화·사회",e:"Social norms are slowly changing in response to shifting values.",k:"가치관의 변화에 따라 사회적 규범이 서서히 바뀌고 있어요."},
+  {w:"emigration",m:"이민 출국",c:"문화·사회",e:"Emigration of skilled workers is a serious problem for developing countries.",k:"숙련 근로자의 이민 출국이 개발도상국의 심각한 문제예요."},
+  {w:"social cohesion",m:"사회적 결속력",c:"문화·사회",e:"Strong social cohesion makes communities more resilient in times of crisis.",k:"강한 사회적 결속력이 위기의 시기에 지역 사회를 더 회복력 있게 만들어요."},
+  {w:"taboo",m:"금기",c:"문화·사회",e:"Topics like mental health are becoming less taboo in many cultures.",k:"정신 건강 같은 주제가 많은 문화에서 점점 덜 금기시되고 있어요."},
+  {w:"censorship",m:"검열",c:"문화·사회",e:"Censorship of the media is a serious threat to freedom of expression.",k:"미디어 검열은 표현의 자유에 대한 심각한 위협이에요."},
+  {w:"religion",m:"종교",c:"문화·사회",e:"Religion continues to play a significant role in shaping cultural values.",k:"종교가 문화적 가치를 형성하는 데 여전히 중요한 역할을 하고 있어요."},
+  {w:"volunteer",m:"자원봉사",c:"문화·사회",e:"Volunteering strengthens social bonds and improves personal wellbeing.",k:"자원봉사가 사회적 유대를 강화하고 개인 웰빙을 향상시켜요."},
+  {w:"patriarchy",m:"가부장제",c:"문화·사회",e:"Patriarchal attitudes still hold women back in many workplaces.",k:"가부장적 태도가 여전히 많은 직장에서 여성을 억압하고 있어요."},
+];
+
+const allCats=["전체","환경·기후","기술·SNS","교육","건강·웰빙","사회·경제","도시·여행","문화·사회"];
+function getCatCount(cat){if(cat==="전체")return data.length;return data.filter(d=>d.c===cat).length;}
+
+let activeCat="전체",openSet=new Set(),currentUtterance=null,playingWord=null,playingEx=null,voices=[],selectedVoice=null;
+
+function loadVoices(){
+  const all=speechSynthesis.getVoices();
+  voices=all.filter(v=>v.lang.startsWith("en"));
+  const sel=document.getElementById("voiceSelect");
+  sel.innerHTML="";
+  voices.forEach((v,i)=>{
+    const opt=document.createElement("option");
+    opt.value=i;
+    opt.textContent=v.name+" ("+v.lang+")";
+    sel.appendChild(opt);
+  });
+  const auIdx=voices.findIndex(v=>v.name.includes("Karen")||v.name.includes("AU")||v.lang==="en-AU");
+  const defaultIdx=auIdx>=0?auIdx:0;
+  sel.value=defaultIdx;
+  selectedVoice=voices[defaultIdx]||null;
+  sel.onchange=()=>{selectedVoice=voices[parseInt(sel.value)]||null;};
+}
+
+function speak(text,id,isEx){
+  if(currentUtterance){
+    speechSynthesis.cancel();
+    if((isEx&&playingEx===id)||(!isEx&&playingWord===id)){
+      currentUtterance=null;playingWord=null;playingEx=null;
+      render(document.getElementById("search").value);return;
+    }
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang="en-AU";u.rate=0.88;u.pitch=1;u.volume=1;
+  if(selectedVoice)u.voice=selectedVoice;
+  u.onend=()=>{currentUtterance=null;playingWord=null;playingEx=null;render(document.getElementById("search").value);};
+  currentUtterance=u;
+  if(isEx){playingEx=id;playingWord=null;}else{playingWord=id;playingEx=null;}
+  speechSynthesis.speak(u);
+  render(document.getElementById("search").value);
+}
+
+function render(q){
+  const lower=q.toLowerCase();
+  const filtered=data.filter(d=>{
+    const catOk=activeCat==="전체"||(d.c===activeCat);
+    const searchOk=!lower||d.w.includes(lower)||d.m.includes(lower);
+    return catOk&&searchOk;
+  });
+  document.getElementById("cnt").textContent=filtered.length+"개";
+  const list=document.getElementById("list");
+  if(!filtered.length){list.innerHTML='<div class="empty">검색 결과가 없습니다.</div>';return;}
+  list.innerHTML=filtered.map(d=>{
+    const open=openSet.has(d.w);
+    const wPlay=playingWord===d.w;
+    const ePlay=playingEx===d.w+"-ex";
+    return`<div class="card${open?" open":""}">
+      <div class="card-top" onclick="toggleCard('${d.w.replace(/'/g,"\\'").replace(/"/g,"&quot;")}')">
+        <span class="word">${d.w}</span>
+        <span class="meaning">${d.m}</span>
+        <span class="speak-btn${wPlay?" playing":""}" onclick="event.stopPropagation();speak('${d.w.replace(/'/g,"\\'")}','${d.w.replace(/'/g,"\\'")}',false)">${wPlay?"■":"▶"}</span>
+        <span class="arrow">&#8964;</span>
+      </div>
+      ${open?`<div class="detail">
+        <div class="ex-wrap">
+          <span class="ex-speak${ePlay?" playing":""}" onclick="speak('${d.e.replace(/'/g,"\\'")}','${(d.w+"-ex").replace(/'/g,"\\'")}',true)">${ePlay?"■":"▶"}</span>
+          <div class="ex-text">
+            <div class="ex-en">${d.e}</div>
+            <div class="ex-kr">${d.k}</div>
+          </div>
+        </div>
+      </div>`:""}
+    </div>`;
+  }).join("");
+}
+
+function toggleCard(w){if(openSet.has(w))openSet.delete(w);else openSet.add(w);render(document.getElementById("search").value);}
+function buildCats(){
+  document.getElementById("cats").innerHTML=allCats.map(c=>
+    `<button class="cat-btn${c===activeCat?" active":""}" onclick="setcat('${c}')">${c}<span class="badge">${getCatCount(c)}</span></button>`
+  ).join("");
+}
+function setcat(c){activeCat=c;buildCats();render(document.getElementById("search").value);}
+document.getElementById("search").addEventListener("input",e=>render(e.target.value));
+speechSynthesis.onvoiceschanged=loadVoices;
+loadVoices();buildCats();render("");
+</script>
+</body>
+</html>
