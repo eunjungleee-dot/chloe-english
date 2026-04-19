@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge IELTS 19 완전정복 학습지</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Noto+Serif+KR:wght@300;400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terracotta: #A0674A;
+  --terracotta-light: #C4896A;
+  --terracotta-pale: #F5EDE8;
+  --steel: #5E7A8A;
+  --steel-light: #8FA8B5;
+  --steel-pale: #EBF0F3;
+  --pistachio: #7A9068;
+  --pistachio-light: #A0B48E;
+  --pistachio-pale: #EDF2EA;
+  --dark: #1A1A1A;
+  --mid: #4A4A4A;
+  --light: #F8F6F3;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', 'Noto Serif KR', sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--dark);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(160,103,74,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -150px; left: -150px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(94,122,138,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-left {
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(160,103,74,0.15);
+  border: 1px solid rgba(160,103,74,0.4);
+  color: var(--terracotta-light);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+  width: fit-content;
+  animation: fadeUp 0.8s ease both;
+}
+
+.badge-dot {
+  width: 6px; height: 6px;
+  background: var(--terracotta-light);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 12px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.hero-title span {
+  color: var(--terracotta-light);
+}
+
+.hero-subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 40px;
+  line-height: 1.5;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.hero-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+  margin-bottom: 48px;
+  max-width: 480px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 48px;
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+
+.stat-num span {
+  font-size: 18px;
+  color: var(--terracotta-light);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.5px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.5s ease both;
+}
+
+.btn-primary {
+  background: var(--terracotta);
+  color: white;
+  border: none;
+  padding: 16px 36px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--terracotta-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(160,103,74,0.4);
+}
+
+.btn-secondary {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.btn-secondary:hover { color: white; }
+
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.book-stack {
+  position: relative;
+  width: 340px;
+  height: 420px;
+}
+
+.book-card {
+  position: absolute;
+  width: 260px;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.book-card-1 {
+  background: linear-gradient(135deg, var(--terracotta) 0%, #7A4530 100%);
+  top: 0; left: 40px;
+  transform: rotate(-4deg);
+  z-index: 1;
+}
+
+.book-card-2 {
+  background: linear-gradient(135deg, var(--steel) 0%, #3D5A6A 100%);
+  top: 40px; left: 20px;
+  transform: rotate(2deg);
+  z-index: 2;
+}
+
+.book-card-3 {
+  background: linear-gradient(135deg, var(--pistachio) 0%, #526040 100%);
+  top: 80px; left: 60px;
+  transform: rotate(-1deg);
+  z-index: 3;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: rotate(-1deg) translateY(0); }
+  50% { transform: rotate(-1deg) translateY(-10px); }
+}
+
+.book-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 12px;
+}
+
+.book-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.book-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+.pages-badge {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  background: var(--white);
+  color: var(--dark);
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  z-index: 10;
+  text-align: center;
+}
+
+.pages-badge strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--terracotta);
+  line-height: 1;
+}
+
+.pages-badge span {
+  font-size: 11px;
+  color: var(--mid);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION COMMON ── */
+section {
+  padding: 100px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: var(--mid);
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+/* ── WHAT'S INSIDE ── */
+.inside-section {
+  background: var(--white);
+  max-width: 100%;
+  padding: 100px 0;
+}
+
+.inside-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.inside-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.inside-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.inside-card {
+  border-radius: 16px;
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.inside-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+}
+
+.inside-card-1 { background: var(--terracotta-pale); }
+.inside-card-2 { background: var(--steel-pale); }
+.inside-card-3 { background: var(--pistachio-pale); }
+
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 20px;
+  opacity: 0.15;
+  position: absolute;
+  top: 20px; right: 24px;
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.inside-card-1 .card-title { color: var(--terracotta); }
+.inside-card-2 .card-title { color: var(--steel); }
+.inside-card-3 .card-title { color: var(--pistachio); }
+
+.card-desc {
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.8;
+}
+
+.card-items {
+  list-style: none;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-items li {
+  font-size: 13px;
+  color: var(--mid);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.card-items li::before {
+  content: '→';
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.inside-card-1 .card-items li::before { color: var(--terracotta); }
+.inside-card-2 .card-items li::before { color: var(--steel); }
+.inside-card-3 .card-items li::before { color: var(--pistachio); }
+
+/* ── HOW IT WORKS ── */
+.how-section {
+  background: var(--dark);
+  max-width: 100%;
+  padding: 100px 0;
+}
+
+.how-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.how-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.how-header .section-tag { color: var(--terracotta-light); }
+.how-header .section-title { color: var(--white); }
+.how-header .section-desc { color: rgba(255,255,255,0.5); margin: 0 auto; }
+
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.how-steps::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(to right, var(--terracotta), var(--steel), var(--pistachio), var(--terracotta-light));
+  opacity: 0.3;
+}
+
+.step {
+  padding: 0 24px;
+  text-align: center;
+  position: relative;
+}
+
+.step-num {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin: 0 auto 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.step:nth-child(1) .step-num { background: var(--terracotta); }
+.step:nth-child(2) .step-num { background: var(--steel); }
+.step:nth-child(3) .step-num { background: var(--pistachio); }
+.step:nth-child(4) .step-num { background: var(--terracotta-light); }
+
+.step-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.step-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+}
+
+/* ── PRICING ── */
+.pricing-section {
+  background: var(--light);
+  max-width: 100%;
+  padding: 100px 0;
+}
+
+.pricing-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.pricing-header { margin-bottom: 48px; }
+.pricing-header .section-tag { color: var(--pistachio); }
+
+.pricing-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 56px 48px;
+  position: relative;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--terracotta), var(--steel), var(--pistachio));
+}
+
+.earlybird-banner {
+  background: linear-gradient(135deg, var(--terracotta-pale), var(--pistachio-pale));
+  border: 1px solid rgba(160,103,74,0.2);
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.earlybird-icon { font-size: 20px; }
+
+.earlybird-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--terracotta);
+}
+
+.earlybird-text span {
+  color: var(--mid);
+  font-weight: 400;
+}
+
+.price-display {
+  margin-bottom: 40px;
+}
+
+.price-original {
+  font-size: 18px;
+  color: #aaa;
+  text-decoration: line-through;
+  margin-bottom: 8px;
+}
+
+.price-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+}
+
+.price-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--dark);
+  line-height: 1;
+}
+
+.price-won {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--mid);
+}
+
+.price-discount {
+  display: inline-block;
+  background: var(--terracotta);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-top: 12px;
+}
+
+.price-note {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 8px;
+}
+
+.slots {
+  margin-bottom: 40px;
+}
+
+.slots-label {
+  font-size: 13px;
+  color: var(--mid);
+  margin-bottom: 10px;
+}
+
+.slots-bar {
+  background: #f0f0f0;
+  border-radius: 100px;
+  height: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.slots-fill {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(to right, var(--terracotta), var(--terracotta-light));
+  border-radius: 100px;
+  animation: fillBar 2s ease both;
+}
+
+@keyframes fillBar {
+  from { width: 0; }
+  to { width: 40%; }
+}
+
+.slots-count {
+  font-size: 12px;
+  color: var(--terracotta);
+  font-weight: 600;
+}
+
+.pricing-includes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.include-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--mid);
+}
+
+.include-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.include-dot-1 { background: var(--terracotta); }
+.include-dot-2 { background: var(--steel); }
+.include-dot-3 { background: var(--pistachio); }
+
+.btn-cta {
+  display: block;
+  width: 100%;
+  background: var(--dark);
+  color: white;
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.5px;
+}
+
+.btn-cta:hover {
+  background: var(--terracotta);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(160,103,74,0.3);
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--dark);
+  padding: 40px;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.8;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-right { display: none; }
+  .hero-left { padding: 60px 32px; }
+  .inside-grid { grid-template-columns: 1fr; }
+  .how-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .how-steps::before { display: none; }
+  .pricing-includes { grid-template-columns: 1fr; }
+  .pricing-card { padding: 40px 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Cambridge IELTS 19 Academic · IELTS Reading
+    </div>
+    <h1 class="hero-title">
+      독학을 위한<br>
+      <span>완벽 가이드</span>
+    </h1>
+    <p class="hero-subtitle">인강보다 강력한 독학 학습지</p>
+    <div style="margin-bottom:28px; animation:fadeUp 0.8s 0.2s ease both;">
+      <div style="font-family:'Playfair Display',serif; font-size:clamp(22px,2.5vw,32px); font-weight:700; color:var(--terracotta-light); line-height:1.3; margin-bottom:20px;">
+        아이엘츠 리딩<br>어려우셨죠?
+      </div>
+      <p style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.9;">
+        20번 읽기의 강력한 학습효과에 <strong style="color:rgba(255,255,255,0.8);">부스터를 달아줄 학습지</strong>입니다.<br>
+        한 단락 안에 배워야 할 단어·표현·긴 문장 분석을 연습문제를 통해 쉽게 외울 수 있습니다.<br><br>
+        필수단어/표현은 물론 어려운 문장구조를 분해하는 실력을 키우고,<br>
+        키워드로 문제 푸는 방법도 해설서와 동의어·유의어 정리본에 담았습니다.<br><br>
+        <strong style="color:rgba(255,255,255,0.8);">① 쉽게 리딩공부</strong> &nbsp;·&nbsp; <strong style="color:rgba(255,255,255,0.8);">② 빠르게 실력 + 스킬 둘 다</strong><br><br>
+        실력을 올리는 가장 직접적인 방법은 <strong style="color:var(--terracotta-light);">독학</strong>입니다.<br>
+        이 학습지는 여러분의 독학을 더욱 쉽게 만들어드립니다.
+      </p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">603<span>p</span></div>
+        <div class="stat-label">총 페이지</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4<span>회분</span></div>
+        <div class="stat-label">테스트 구성</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12<span>주</span></div>
+        <div class="stat-label">완성 플랜</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn-primary">얼리버드 신청하기</a>
+      <a href="#inside" class="btn-secondary">구성 보기 →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="book-stack">
+      <div class="book-card book-card-1">
+        <div class="book-label">Test 1 · Passage 1</div>
+        <div class="book-title">How tennis rackets have changed</div>
+        <span class="book-tag">단어정리</span>
+        <span class="book-tag">문장분석</span>
+        <span class="book-tag">연습문제</span>
+      </div>
+      <div class="book-card book-card-2">
+        <div class="book-label">Test 3 · Passage 2</div>
+        <div class="book-title">Wetland Conservation</div>
+        <span class="book-tag">Answer Key</span>
+        <span class="book-tag">동의어표</span>
+      </div>
+      <div class="book-card book-card-3">
+        <div class="book-label">Test 4 · Passage 3</div>
+        <div class="book-title">The Unselfish Gene</div>
+        <span class="book-tag">키워드 매칭</span>
+        <span class="book-tag">해설</span>
+        <span class="book-tag">유의어</span>
+      </div>
+      <div class="pages-badge">
+        <strong>603</strong>
+        <span>pages</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- COPY SECTION -->
+<div style="background:var(--white); padding:100px 40px;">
+  <div style="max-width:780px; margin:0 auto;">
+
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(28px,3vw,40px); font-weight:700; line-height:1.3; color:var(--dark); margin-bottom:48px;">
+      아이엘츠 리딩,<br><span style="color:var(--terracotta);">어려우셨죠?</span>
+    </h2>
+
+    <p style="font-family:'Noto Serif KR',serif; font-size:17px; line-height:2; color:var(--mid); margin-bottom:32px;">
+      인강에 들어갈 모든 내용을 더욱 자세하게 학습지로 풀었습니다.<br>
+      단락따라 나뉜 <strong style="color:var(--dark);">데일리 학습지만 하셔도 하루 리딩공부가 완성</strong>되도록 만들었습니다.
+    </p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:48px;">
+      <div style="background:var(--steel-pale); border-left:3px solid var(--steel); padding:24px 28px; border-radius:0 12px 12px 0;">
+        <div style="font-size:22px; margin-bottom:12px;">🔑</div>
+        <div style="font-size:15px; font-weight:600; color:var(--dark); margin-bottom:8px; line-height:1.4;">아이엘츠 리딩은 동의어·유의어 시험입니다</div>
+        <div style="font-size:14px; color:var(--mid); line-height:1.7;">문제와 지문의 단어 배치를 찾는 시험. 기본 단어와 문장 끊어읽기 실력을 쌓고 나면 키워드 배치로 답을 쏙쏙 뽑아낼 수 있습니다.</div>
+      </div>
+      <div style="background:var(--terracotta-pale); border-left:3px solid var(--terracotta); padding:24px 28px; border-radius:0 12px 12px 0;">
+        <div style="font-size:22px; margin-bottom:12px;">🤔</div>
+        <div style="font-size:15px; font-weight:600; color:var(--dark); margin-bottom:8px; line-height:1.4;">20번을 읽어도 문제 풀 때 헷갈린다면?</div>
+        <div style="font-size:14px; color:var(--mid); line-height:1.7;">키워드를 사용해서 문제 푸는 스킬을 모른다면? 해설서를 통해 어떻게 답을 찾는지 그 방식을 직접 보여드립니다.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--pistachio-pale); border-radius:16px; padding:32px 36px; display:flex; align-items:center; gap:24px;">
+      <div style="font-size:36px; flex-shrink:0;">✅</div>
+      <div>
+        <div style="font-size:16px; font-weight:700; color:var(--pistachio); margin-bottom:8px;">이 학습지 하나로</div>
+        <div style="font-size:15px; color:var(--mid); line-height:1.8;">
+          기본 단어 암기 → 문장 구조 이해 → 키워드 배치 훈련 → 실전 문제 풀이까지<br>
+          <strong style="color:var(--dark);">IELTS 리딩의 전 과정을 독학으로 완성</strong>할 수 있습니다.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- WHAT'S INSIDE -->
+<div class="inside-section" id="inside">
+  <div class="inside-inner">
+    <div class="inside-header">
+      <div class="section-tag" style="color:var(--terracotta);">What's Inside</div>
+      <h2 class="section-title">이 학습지에 담긴 것들</h2>
+      <p class="section-desc" style="margin:0 auto;">단순한 해석이 아닙니다. 혼자 공부해도 강의 없이 이해되도록 설계했습니다.</p>
+    </div>
+    <div class="inside-grid">
+      <div class="inside-card inside-card-1">
+        <div class="card-num">01</div>
+        <div class="card-icon">📖</div>
+        <div class="card-title">단락별 완전 분해</div>
+        <div class="card-desc">각 지문을 단락 단위로 나누어 집중 학습</div>
+        <ul class="card-items">
+          <li>단어 정리 (품사·예문·한국어 뜻)</li>
+          <li>핵심 표현 정리</li>
+          <li>긴 문장 구조 분석 (청킹 + 문법 포인트)</li>
+          <li>단어 매칭 / 빈칸 채우기 연습</li>
+        </ul>
+      </div>
+      <div class="inside-card inside-card-2">
+        <div class="card-num">02</div>
+        <div class="card-icon">🎯</div>
+        <div class="card-title">키워드 기반 Answer Key</div>
+        <div class="card-desc">정답을 외우는 게 아니라, 찾는 법을 배웁니다</div>
+        <ul class="card-items">
+          <li>문제 키워드 → 지문 키워드 매칭</li>
+          <li>근거 문장 (완전한 문장)</li>
+          <li>볼드 = 키워드, 색상 = 정답 표시</li>
+          <li>난이도 높은 함정 문제 별도 해설</li>
+        </ul>
+      </div>
+      <div class="inside-card inside-card-3">
+        <div class="card-num">03</div>
+        <div class="card-icon">🔄</div>
+        <div class="card-title">동의어 / 유의어 표</div>
+        <div class="card-desc">IELTS가 즐겨 쓰는 paraphrase 패턴 총정리</div>
+        <ul class="card-items">
+          <li>문제 표현 ↔ 지문 표현 대조</li>
+          <li>TRUE/FALSE/YES/NO 근거 반대 표현</li>
+          <li>테스트별 색상 구분 정리</li>
+          <li>단순 키워드 매칭 아닌 진짜 동의어만</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+  <div class="how-inner">
+    <div class="how-header">
+      <div class="section-tag">How to Study</div>
+      <h2 class="section-title" style="color:white;">이렇게 공부하세요</h2>
+      <p class="section-desc">단계별로 따라가면 자연스럽게 실력이 쌓입니다</p>
+    </div>
+    <div class="how-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">단락 읽기</div>
+        <div class="step-desc">지문을 읽으며 볼드 단어와 표현에 집중</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">문장 분석</div>
+        <div class="step-desc">긴 문장을 청킹으로 분해해 구조 파악</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">연습 문제</div>
+        <div class="step-desc">매칭과 빈칸으로 표현을 완전히 내 것으로</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">실전 문제 풀기</div>
+        <div class="step-desc">키워드로 근거를 찾아 정답 도출 훈련</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-section" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <div class="section-tag">Early Bird</div>
+      <h2 class="section-title">얼리버드 10% 할인</h2>
+    </div>
+    <div class="pricing-card">
+      <div class="earlybird-banner">
+        <span class="earlybird-icon">⚡</span>
+        <span class="earlybird-text">
+          얼리버드 10% 할인 <span>— 선착순 30명 한정</span>
+        </span>
+      </div>
+
+      <div class="price-display">
+        <div class="price-original">정가 40,000원</div>
+        <div class="price-main">
+          <div class="price-num">36,000</div>
+          <div class="price-won">원</div>
+        </div>
+        <div class="price-discount">10% OFF</div>
+        <div class="price-note">이후 정가 40,000원으로 판매됩니다</div>
+      </div>
+
+      <div class="slots">
+        <div class="slots-label">얼리버드 남은 자리</div>
+        <div class="slots-bar"><div class="slots-fill"></div></div>
+        <div class="slots-count">⚠ 30명 한정 · 마감 시 종료</div>
+      </div>
+
+      <div class="pricing-includes">
+        <div class="include-item">
+          <span class="include-dot include-dot-1"></span>
+          단락별 학습지 (4회분)
+        </div>
+        <div class="include-item">
+          <span class="include-dot include-dot-2"></span>
+          Answer Key (전 문항 해설)
+        </div>
+        <div class="include-item">
+          <span class="include-dot include-dot-3"></span>
+          Synonym Table (동의어표)
+        </div>
+        <div class="include-item">
+          <span class="include-dot include-dot-1"></span>
+          총 603페이지 PDF
+        </div>
+        <div class="include-item">
+          <span class="include-dot include-dot-2"></span>
+          Google Drive 공유
+        </div>
+        <div class="include-item">
+          <span class="include-dot include-dot-3"></span>
+          업데이트 시 재공유
+        </div>
+      </div>
+
+      <button class="btn-cta">얼리버드 신청하기 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>
+    Cambridge IELTS 19 Academic Module<br>
+    Reading 완전정복 학습지 · 603pages<br><br>
+    문의는 DM으로 주세요
+  </p>
+</div>
+
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.querySelector(a.getAttribute('href'));
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.inside-card, .step, .pricing-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
