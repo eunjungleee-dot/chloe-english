@@ -769,7 +769,7 @@ svg.trk{display:block;width:100%;min-width:660px;height:auto}
 .bt thead th{font-family:'Gothic A1';font-size:16.5px;font-weight:800;color:var(--blue-d);
   border-bottom:2px solid var(--line);line-height:1.30;vertical-align:bottom}
 .bt thead th:first-child{color:var(--ink-3);font-size:14.5px}
-.bt thead th span{display:block;font-size:12.5px;font-weight:600;color:var(--ink-3);margin-top:3px}
+.bt thead th span{display:block;font-size:12.5px;font-weight:600;color:var(--ink-3);margin-bottom:3px}
 .bt tbody th{font-family:'Gothic A1';font-size:16.5px;font-weight:800;color:var(--ink);text-align:center;
   border-bottom:1px solid var(--line)}
 .bt tbody td{font-family:'IBM Plex Mono';font-size:21px;font-weight:600;color:var(--ink-2);
@@ -2082,8 +2082,8 @@ h2{font-size:clamp(29px,3.6vw,38px)!important}
         <thead><tr>
           <th>목표</th>
           <th>리스닝</th>
-          <th>리딩<span>아카데믹</span></th>
-          <th>리딩<span>제너럴</span></th>
+          <th><span>아카데믹</span>리딩</th>
+          <th><span>제너럴</span>리딩</th>
         </tr></thead>
         <tbody>
           <tr><th>5점</th><td>16</td><td>15</td><td class="g">23</td></tr>
@@ -2093,7 +2093,7 @@ h2{font-size:clamp(29px,3.6vw,38px)!important}
         </tbody>
       </table>
     </div>
-    <p class="bc-note">40개를 다 맞힐 필요가 없습니다. <strong>목표 점수에 필요한 개수에 집중합니다.</strong>
+    <p class="bc-note">40개 다 맞아야 하는 게 아닙니다. <strong>목표 점수에 필요한 개수에 집중합니다.</strong>
       쉬운 순서대로 목표 개수에 빠르게 도달합니다.</p>
 
     <div class="ask reveal">
@@ -2152,10 +2152,6 @@ h2{font-size:clamp(29px,3.6vw,38px)!important}
                 <h3>리딩·리스닝 <br>스터디</h3>
         <p class="pl-for">5점에서 8.5, 클로이 방법 그대로</p>
         <div class="tw">
-          <div class="tw-tabs" role="tablist" aria-label="기간 선택">
-            <button type="button" data-w="3" aria-selected="true">3주</button>
-            <button type="button" data-w="12" aria-selected="false">12주</button>
-          </div>
           <div class="tw-rows" id="swRows"></div>
           <p class="tw-note" id="swNote"></p>
         </div>
@@ -2644,8 +2640,7 @@ h2{font-size:clamp(29px,3.6vw,38px)!important}
 
   /* 스터디 가격 */
   var STUDY_PRICE = {
-     3: [ ['리딩 <em>or</em> 리스닝', 50000, null], ['리딩 + 리스닝', 70000, null] ],
-    12: [ ['리딩 + 리스닝', 250000, 280000] ]
+     3: [ ['리딩 · 리스닝 <em>과목당</em>', 55000, 60000], ['리딩 + 리스닝 <em>두 과목</em>', 100000, null] ]
   };
 
   (function(){
@@ -2717,9 +2712,7 @@ h2{font-size:clamp(29px,3.6vw,38px)!important}
         var price = r[2] ? '<span class="was">'+r[2].toLocaleString('ko-KR')+'</span> '+won(r[1]) : won(r[1]);
         return '<div class="twr"><i>'+r[0]+'</i><span class="rt"><b>'+price+'</b></span></div>';
       }).join('');
-      note.innerHTML = (w===3)
-        ? '3주 단위로 진행합니다. 끝나면 다음 3주가 이어집니다.'
-        : '12주 동안 캠브리지 <b>한 권을 끝까지</b> 독파합니다.';
+      note.innerHTML = '3주 단위로 진행합니다. 끝나면 다음 3주가 이어집니다.';
     }
     document.querySelectorAll('.pl-study .tw-tabs button[data-w]').forEach(function(b){
       b.addEventListener('click', function(){
